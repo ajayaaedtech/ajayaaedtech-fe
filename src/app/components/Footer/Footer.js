@@ -1,7 +1,6 @@
 "use client";
-import { useState } from 'react';
 import expert from "/public/newsletter-icon.svg";
-import rightmostimage from "/public/orignal-logo-.jpg";
+import rightmostimage from "/public/b.png";
 import Image from "next/image";
 
 export default function Footer() {
@@ -40,37 +39,68 @@ export default function Footer() {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-12">
           {/* More About Us Section */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white mb-4">More About Us</h3>
+          <div className="space-6">
+            <div className="relative inline-block">
+              <h3 className="text-xl font-semibold text-white mb-4 relative z-10">
+                More About Us
+              </h3>
+              <svg
+                viewBox="0 0 200 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute left-0 bottom-1 w-full h-4 z-0"
+              >
+                <path
+                  d="M2 15 C 50 5, 150 25, 198 10"
+                  stroke="#FFA500"  // Orange color
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </svg>
+            </div>
+
             <div className="space-y-3">
               {['About Us', 'Blogs', 'Contact Us'].map((item) => (
                 <a
                   key={item}
                   href="#"
-                  className="block text-slate-300 hover:text-blue-400 transition-all duration-300 hover:translate-x-2 text-sm md:text-base group"
+                  className="block text-slate-300 hover:text-blue-400 transition-all duration-300 hover:translate-x-2 text-md md:text-base group"
                 >
-                  <span className="group-hover:underline">{item}</span>
+                  <span className="flex items-center gap-2 group-hover:underline">
+                    {/* Orange Dot */}
+                    <span className="inline-block w-2.5 h-2.5 bg-orange-400 rounded-full"></span>
+                    {item}
+                  </span>
                 </a>
               ))}
             </div>
+
 
             <div className="mt-8 space-y-3">
               {['Email Us', 'Talk to a Counsellor'].map((item) => (
                 <a
                   key={item}
                   href="#"
-                  className="block text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:translate-x-2 text-sm md:text-base group"
+                  className="block text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:translate-x-2 text-md md:text-base group"
                 >
-                  <span className="group-hover:underline">{item}</span>
+                  <span className="flex items-center gap-2 group-hover:underline">
+                    {/* Center-aligned Orange Dot */}
+                    <span className="inline-block w-2.5 h-2.5 bg-orange-400 rounded-full"></span>
+                    {item}
+                  </span>
                 </a>
               ))}
             </div>
+
+
           </div>
 
-          {/* Country Selection */}
-          <div className="space-y-6">
-            <div className="flex items-center justify-between gap-4 p-4 rounded-lg bg-white shadow-md border border-gray-200 max-w-md">
-              {/* Text */}
+          {/* Expert Counselling Card - Centered on Mobile */}
+          <div className=" ">
+            <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 p-4 rounded-lg bg-white shadow-md border border-gray-200 max-w-md w-full mx-auto text-center sm:text-left">
+
+              {/* Text Content */}
               <div>
                 <h3 className="text-base font-semibold text-gray-800">
                   Know more about our courses. <br />
@@ -90,38 +120,28 @@ export default function Footer() {
                 />
               </div>
             </div>
-
-            {/* Quick Links for mobile */}
-            <div className="mt-8 lg:hidden">
-              <h4 className="text-lg font-semibold text-white mb-3">Quick Links</h4>
-              <div className="grid grid-cols-2 gap-2">
-                {['Courses', 'Pricing', 'Support'].map((item) => (
-                  <a
-                    key={item}
-                    href="#"
-                    className="text-slate-300 hover:text-blue-400 transition-all duration-300 text-sm"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
+
           {/* Mascot Section - Modified for mobile centering */}
-          <div className="flex justify-center lg:justify-end items-end">
-            <div className="relative group w-full max-w-xs mx-auto lg:mx-0">
+          {/* Mascot Section - Mobile & Desktop Centered */}
+          <div className="flex justify-center lg:justify-center items-center h-full py-4">
+            <div className="relative group w-full max-w-[210px] mx-auto">
+              {/* Mascot Image */}
               <Image
                 src={rightmostimage}
                 alt="Ajayaa EdTech Mascot"
-                className="object-contain w-full h-auto"
-                width={300}
-                height={300}
+                className="object-contain relative z-10 w-full h-auto"
+                width={210}
+                height={100}
+                priority
               />
-              {/* Glow effect */}
+
+              {/* Glow Effect Behind Image */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500"></div>
             </div>
           </div>
+
         </div>
 
         {/* Bottom Section */}
