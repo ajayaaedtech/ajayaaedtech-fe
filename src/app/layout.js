@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import MainMenu from "./components/menu/MainMenu";
+import ReduxProvider from "./provider";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -29,9 +30,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-         <MainMenu/>
-        
-        {children}
+        <ReduxProvider>
+          <MainMenu />
+
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );

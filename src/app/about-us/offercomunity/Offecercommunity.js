@@ -117,51 +117,45 @@ const OfferingsCommComponent = () => {
         {/* Offerings Cards - Desktop Optimized 3-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mb-24 lg:mb-32">
           {offerings.map((item, index) => (
-            <div 
+            <div
               key={index}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
               className="group relative"
             >
-              <div className={`relative overflow-hidden rounded-3xl p-8 lg:p-10 bg-white shadow-xl border border-gray-100 transition-all duration-700 transform ${
-                hoveredCard === index 
-                  ? 'scale-105 shadow-2xl border-[#5598B5]/30' 
+              <div className={`relative overflow-hidden rounded-3xl p-8 lg:p-10 bg-white shadow-xl border border-gray-100 transition-all duration-700 transform ${hoveredCard === index
+                  ? 'scale-105 shadow-2xl border-[#5598B5]/30'
                   : 'hover:scale-102 hover:shadow-xl'
-              }`}>
-                
-                {/* Gradient Background Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.bgGradient} opacity-0 transition-opacity duration-700 ${
-                  hoveredCard === index ? 'opacity-5' : ''
-                }`}></div>
-                
-                {/* Large Background Icon */}
-                <div className={`absolute -right-6 -top-6 text-8xl lg:text-9xl opacity-5 transition-all duration-700 ${
-                  hoveredCard === index ? 'opacity-10 scale-110 rotate-12' : ''
                 }`}>
+
+                {/* Gradient Background Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.bgGradient} opacity-0 transition-opacity duration-700 ${hoveredCard === index ? 'opacity-5' : ''
+                  }`}></div>
+
+                {/* Large Background Icon */}
+                <div className={`absolute -right-6 -top-6 text-8xl lg:text-9xl opacity-5 transition-all duration-700 ${hoveredCard === index ? 'opacity-10 scale-110 rotate-12' : ''
+                  }`}>
                   {item.icon}
                 </div>
-                
+
                 {/* Content */}
                 <div className="relative z-10">
-                  <div className={`w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br ${item.bgGradient} flex items-center justify-center text-3xl lg:text-4xl mb-6 lg:mb-8 shadow-lg transition-all duration-500 ${
-                    hoveredCard === index ? 'shadow-xl scale-110' : ''
-                  }`}>
+                  <div className={`w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br ${item.bgGradient} flex items-center justify-center text-3xl lg:text-4xl mb-6 lg:mb-8 shadow-lg transition-all duration-500 ${hoveredCard === index ? 'shadow-xl scale-110' : ''
+                    }`}>
                     {item.icon}
                   </div>
-                  <h3 className={`text-2xl lg:text-3xl font-bold mb-4 lg:mb-6 transition-colors duration-300 ${
-                    hoveredCard === index ? 'text-[#004EA5]' : 'text-gray-800'
-                  }`}>
+                  <h3 className={`text-2xl lg:text-3xl font-bold mb-4 lg:mb-6 transition-colors duration-300 ${hoveredCard === index ? 'text-[#004EA5]' : 'text-gray-800'
+                    }`}>
                     {item.title}
                   </h3>
                   <p className="text-gray-600 text-base lg:text-lg leading-relaxed">
                     {item.description}
                   </p>
                 </div>
-                
+
                 {/* Hover Glow Effect */}
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r from-[#004EA5]/10 to-[#5598B5]/10 opacity-0 transition-opacity duration-700 ${
-                  hoveredCard === index ? 'opacity-100' : ''
-                }`}></div>
+                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r from-[#004EA5]/10 to-[#5598B5]/10 opacity-0 transition-opacity duration-700 ${hoveredCard === index ? 'opacity-100' : ''
+                  }`}></div>
               </div>
             </div>
           ))}
@@ -190,18 +184,16 @@ const OfferingsCommComponent = () => {
               <div
                 key={index}
                 onClick={() => handleObjectiveClick(index)}
-                className={`group p-6 lg:p-8 rounded-2xl cursor-pointer transition-all duration-500 border ${
-                  activeObjective === index
+                className={`group p-6 lg:p-8 rounded-2xl cursor-pointer transition-all duration-500 border ${activeObjective === index
                     ? 'bg-gradient-to-r from-[#004EA5] to-[#01319E] text-white shadow-2xl scale-105 border-[#004EA5]'
-                    : 'bg-white hover:bg-gray-50 shadow-lg hover:shadow-xl border-gray-200 hover:border-[#5598B5]/30'
-                }`}
+                    : 'bg-white hover:bg-gray-50 shadow-lg text-gray-400 hover:shadow-xl border-gray-200 hover:border-[#5598B5]/30'
+                  }`}
               >
                 <div className="flex items-center space-x-6">
-                  <div className={`w-14 h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center text-xl lg:text-2xl font-bold shadow-lg transition-all duration-300 ${
-                    activeObjective === index 
-                      ? 'bg-white text-[#004EA5] scale-110' 
+                  <div className={`w-14 h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center text-xl lg:text-2xl font-bold shadow-lg transition-all duration-300 ${activeObjective === index
+                      ? 'bg-white text-[#004EA5] scale-110'
                       : 'bg-gradient-to-br from-[#004EA5] to-[#01319E] text-white'
-                  }`}>
+                    }`}>
                     {item.number}
                   </div>
                   <div className="flex-1">
@@ -212,9 +204,8 @@ const OfferingsCommComponent = () => {
                       {item.text.substring(0, 100)}...
                     </p>
                   </div>
-                  <div className={`text-3xl lg:text-4xl transition-all duration-300 ${
-                    activeObjective === index ? 'scale-125' : 'opacity-60'
-                  }`}>
+                  <div className={`text-3xl lg:text-4xl transition-all duration-300 ${activeObjective === index ? 'scale-125' : 'opacity-60'
+                    }`}>
                     {item.icon}
                   </div>
                 </div>
@@ -227,9 +218,9 @@ const OfferingsCommComponent = () => {
             <div className="relative overflow-hidden rounded-3xl bg-white shadow-2xl border border-gray-100">
               {/* Image Section */}
               <div className="relative h-64 lg:h-80 overflow-hidden">
-                <Image 
-                width={100}
-                height={100}
+                <Image
+                  width={100}
+                  height={100}
                   src={objectives[activeObjective].image}
                   alt={objectives[activeObjective].title}
                   className="w-full h-full object-cover transition-transform duration-700 scale-105 hover:scale-110"
@@ -240,7 +231,7 @@ const OfferingsCommComponent = () => {
                   <h3 className="text-xl lg:text-2xl font-bold">{objectives[activeObjective].title}</h3>
                 </div>
               </div>
-              
+
               {/* Content Section */}
               <div className="p-8 lg:p-10">
                 <div className="flex items-center mb-6">
@@ -254,18 +245,17 @@ const OfferingsCommComponent = () => {
                 <p className="text-gray-600 text-base lg:text-lg leading-relaxed">
                   {objectives[activeObjective].text}
                 </p>
-                
+
                 {/* Progress Indicators */}
                 <div className="flex justify-center mt-8 space-x-3">
                   {objectives.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => handleObjectiveClick(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === activeObjective 
-                          ? 'bg-[#004EA5] scale-125' 
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeObjective
+                          ? 'bg-[#004EA5] scale-125'
                           : 'bg-gray-300 hover:bg-gray-400'
-                      }`}
+                        }`}
                     />
                   ))}
                 </div>

@@ -116,6 +116,7 @@ export default function ContactForm() {
                 label="Full Name*"
                 name="name"
                 value={form.name}
+                placeh={'Enter your full name'}
                 onChange={handleChange}
                 icon="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
               />
@@ -124,10 +125,11 @@ export default function ContactForm() {
                 name="email"
                 type="email"
                 value={form.email}
+                placeh={'example@gmail.com'}
                 onChange={handleChange}
                 icon="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
               />
-              <InputField
+              <InputPhoneField
                 label="Phone*"
                 name="phone"
                 type="tel"
@@ -139,19 +141,37 @@ export default function ContactForm() {
                 label="College*"
                 name="college"
                 value={form.college}
+                 placeh={'Enter your college name'}
                 onChange={handleChange}
                 icon="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
               />
             </div>
 
             <div className="mt-4">
-              <InputField
+              {/* <InputField
                 label="Course Interested In*"
                 name="course"
                 value={form.course}
                 onChange={handleChange}
                 icon="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+              /> */}
+              <DropdownField
+                label="Course *"
+                name="course"
+                value={form.course}
+                onChange={handleChange}
+                icon="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 "
+                options={[
+                  "Python",
+                  "Java",
+                  "JavaScript",
+                  "Web Development",
+                  "Full Stack",
+                  "Django",
+                  "Salesforce",
+                ]}
               />
+
             </div>
 
             <div className="mt-4">
@@ -161,7 +181,8 @@ export default function ContactForm() {
                 value={form.message}
                 onChange={handleChange}
                 rows="3"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#004EA5] focus:border-transparent"
+                placeholder='Enter message here...'
+                className="w-full text-gray-400 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#004EA5] focus:border-transparent"
               />
             </div>
 
@@ -181,7 +202,7 @@ export default function ContactForm() {
   );
 }
 
-const InputField = ({ label, name, type = 'text', value, onChange, icon }) => (
+const InputField = ({ label, name, type = 'text', value, onChange, icon, placeh = '' }) => (
   <div>
     <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
     <div className="relative">
@@ -190,7 +211,8 @@ const InputField = ({ label, name, type = 'text', value, onChange, icon }) => (
         name={name}
         value={value}
         onChange={onChange}
-        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#004EA5] focus:border-transparent"
+        placeholder={placeh}
+        className="w-full text-gray-400 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#004EA5] focus:border-transparent"
       />
       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
         <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -200,3 +222,70 @@ const InputField = ({ label, name, type = 'text', value, onChange, icon }) => (
     </div>
   </div>
 );
+
+const InputPhoneField = (props) => {
+  const { label, name = "phone", value, onChange, icon } = props;
+
+  const handlePhoneChange = (e) => {
+    const digitsOnly = e.target.value.replace(/\D/g, "");
+    if (digitsOnly.length <= 10) {
+      onChange({
+        target: {
+          name,
+          value: digitsOnly,
+        },
+      });
+    }
+  };
+
+  return (
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+      <div className="relative">
+        <input
+          type="text"
+          name={name}
+          value={value}
+          onChange={handlePhoneChange}
+          inputMode="numeric"
+          placeholder="Enter 10-digit number"
+          className="w-full text-gray-400 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#004EA5] focus:border-transparent"
+        />
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={icon} />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const DropdownField = ({ label, name, value, onChange, icon, options }) => {
+  return (
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+      <div className="relative">
+        <select
+          name={name}
+          value={value}
+          onChange={onChange}
+          className="w-full text-gray-500 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#004EA5] focus:border-transparent appearance-none"
+        >
+          <option value="">Select an option</option>
+          {options.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={icon} />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+};
