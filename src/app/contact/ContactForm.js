@@ -36,7 +36,7 @@ export default function ContactForm() {
     setIsSubmitting(true);
     try {
       // Replace with actual AWS API call
-      const response = await fetch('YOUR_AWS_API_ENDPOINT', {
+      const response = await fetch('https://ajayaaedtech-be.onrender.com/api/form/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
@@ -97,14 +97,14 @@ export default function ContactForm() {
 
 
           {/* Right Form Section */}
-          <div className="p-8 md:w-2/3">
+          <div className="p-1 md:w-2/3">
             <AnimatePresence>
               {status && (
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className={`p-3 mb-4 rounded-lg ${status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}
+                  className={`p-3  mb-4 rounded-lg ${status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}
                 >
                   {status.message}
                 </motion.div>
