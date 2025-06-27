@@ -35,8 +35,9 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
     try {
-      // Replace with actual AWS API call
-      const response = await fetch('https://ajayaaedtech-be.onrender.com/api/form/submit', {
+      // https://ajayaaedtech-be.onrender.com/api/form/submit
+      //http://localhost:5000/api/form/submit
+      const response = await fetch('http://localhost:5000/api/form/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
