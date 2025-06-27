@@ -6,6 +6,7 @@ import { Menu } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import { FaPhoneAlt } from "react-icons/fa";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const menuItems = [
   { name: "Home", href: "/" },
@@ -40,25 +41,25 @@ export default function MainMenu() {
 
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center text-lg text-gray-800">
-          {menuItems.map((item, index) => (
-            <li key={item.name} className="flex items-center">
-              <Link
-                href={item.href}
-                className={`relative px-4 py-1 font-medium transition-all duration-300 ${pathname === item.href
-                    ? "text-[#0047FF] font-semibold"
-                    : "text-gray-800 hover:text-[#0047FF]"
-                  }`}
-              >
-                <span className="relative group">
+        <ul className="hidden md:flex items-center text-lg text-gray-800 relative bg-white rounded-full overflow-hidden gap-4 ">
+          {menuItems.map((item) => (
+            <li key={item.name} className="relative w-[140px] text-center">
+              <Link href={item.href} className="relative z-10 block">
+                <div
+                  className={`w-full py-2 transition-colors duration-300 font-medium rounded-full ${pathname === item.href
+                      ? "text-white"
+                      : "text-gray-800 hover:text-[#0047FF]"
+                    }`}
+                >
                   {item.name}
-                  <span className="absolute left-0 -bottom-1 h-0.5 bg-[#0047FF] transition-all duration-300 w-0 group-hover:w-full"></span>
-                </span>
+                </div>
               </Link>
-
-              {/* Add separator except after last item */}
-              {index < menuItems.length - 1 && (
-                <span className="text-gray-300 text-xl select-none mx-2">|</span>
+              {pathname === item.href && (
+                <motion.div
+                  layoutId="menuHighlight"
+                  className="absolute inset-0 bg-[#0047FF] rounded-full z-0"
+                  transition={{ type: "spring", stiffness: 700, damping: 60, mass: 0.3 }}
+                />
               )}
             </li>
           ))}
