@@ -1,6 +1,8 @@
 "use client"
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import AboutCompany from '../aboutcontent/AboutCompany';
+import { CheckCircleIcon } from 'lucide-react';
 
 const OfferingsCommComponent = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -71,6 +73,12 @@ const OfferingsCommComponent = () => {
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
     }
   ];
+  const advantages = [
+    "Online + Hybrid Training Sessions",
+    "Access via mobile app and web platform",
+    "Recorded sessions for revision and flexible learning",
+    "Certification on course completion"
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-slate-100 relative overflow-hidden">
@@ -100,13 +108,14 @@ const OfferingsCommComponent = () => {
 
       <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-24 relative z-10">
         {/* Header Section */}
+
         <div className="text-center mb-20 lg:mb-28">
           <div className="inline-block mb-6">
             <span className="px-8 py-3 bg-gradient-to-r from-[#004EA5] to-[#01319E] text-white rounded-full text-sm font-bold tracking-wider uppercase shadow-lg">
               Excellence in Education
             </span>
           </div>
-          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 mb-6 leading-tight">
+          <h1 className="text-4xl font-black text-gray-900 mb-6 leading-tight">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#004EA5] to-[#5598B5]">Offerings</span>
           </h1>
           <p className="text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
@@ -124,8 +133,8 @@ const OfferingsCommComponent = () => {
               className="group relative"
             >
               <div className={`relative overflow-hidden rounded-3xl p-8 lg:p-10 bg-white shadow-xl border border-gray-100 transition-all duration-700 transform ${hoveredCard === index
-                  ? 'scale-105 shadow-2xl border-[#5598B5]/30'
-                  : 'hover:scale-102 hover:shadow-xl'
+                ? 'scale-105 shadow-2xl border-[#5598B5]/30'
+                : 'hover:scale-102 hover:shadow-xl'
                 }`}>
 
                 {/* Gradient Background Overlay */}
@@ -185,14 +194,14 @@ const OfferingsCommComponent = () => {
                 key={index}
                 onClick={() => handleObjectiveClick(index)}
                 className={`group p-6 lg:p-8 rounded-2xl cursor-pointer transition-all duration-500 border ${activeObjective === index
-                    ? 'bg-gradient-to-r from-[#004EA5] to-[#01319E] text-white shadow-2xl scale-105 border-[#004EA5]'
-                    : 'bg-white hover:bg-gray-50 shadow-lg text-gray-400 hover:shadow-xl border-gray-200 hover:border-[#5598B5]/30'
+                  ? 'bg-gradient-to-r from-[#004EA5] to-[#01319E] text-white shadow-2xl scale-105 border-[#004EA5]'
+                  : 'bg-white hover:bg-gray-50 shadow-lg text-gray-400 hover:shadow-xl border-gray-200 hover:border-[#5598B5]/30'
                   }`}
               >
                 <div className="flex items-center space-x-6">
                   <div className={`w-14 h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center text-xl lg:text-2xl font-bold shadow-lg transition-all duration-300 ${activeObjective === index
-                      ? 'bg-white text-[#004EA5] scale-110'
-                      : 'bg-gradient-to-br from-[#004EA5] to-[#01319E] text-white'
+                    ? 'bg-white text-[#004EA5] scale-110'
+                    : 'bg-gradient-to-br from-[#004EA5] to-[#01319E] text-white'
                     }`}>
                     {item.number}
                   </div>
@@ -253,8 +262,8 @@ const OfferingsCommComponent = () => {
                       key={index}
                       onClick={() => handleObjectiveClick(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeObjective
-                          ? 'bg-[#004EA5] scale-125'
-                          : 'bg-gray-300 hover:bg-gray-400'
+                        ? 'bg-[#004EA5] scale-125'
+                        : 'bg-gray-300 hover:bg-gray-400'
                         }`}
                     />
                   ))}
@@ -271,6 +280,10 @@ const OfferingsCommComponent = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-[#5598B5] via-[#004EA5] to-[#01319E] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </div>
+
+     
+        
+
       </div>
     </div>
   );

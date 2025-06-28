@@ -1,17 +1,23 @@
+import Footer from "../components/Footer/Footer";
 import ContactForm from "./ContactForm";
-
+import ContectHomeDesign from "./ContectHomeDesign.js";
+import ContactTitleInfo from "./ContectTitleInfo.js";
+import AdditonalInfo from "./AdditonalInfo.js";
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-4xl font-bold text-[#004EA5]">Contact Us</h1>
-        <p className="mt-4 text-gray-600">
-          We would  love to hear from you! Fill out the form below and we ll get back to you shortly.
-        </p>
+    <main className="min-h-screen bg-white ">
+      {/* Teach vision section */}
+      <div className="block border min-h-50 w-full">
+        <ContectHomeDesign />
       </div>
-      <div className="mt-10 max-w-3xl mx-auto">
+
+      <ContactTitleInfo />
+      
+      <div className="mt-10  mx-auto">
         <ContactForm />
       </div>
+      <AdditonalInfo />
+      <Footer />
     </main>
   );
 }
