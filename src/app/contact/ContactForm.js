@@ -58,13 +58,13 @@ export default function ContactForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-4xl mx-auto px-4"
+      className="max-w-4xl mx-auto px-4 "
     >
       <form
         onSubmit={handleSubmit}
-        className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
+        className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 "
       >
-        <div className="md:flex">
+        <div className="md:flex ">
           {/* Left Gradient Section */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}

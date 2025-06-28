@@ -318,16 +318,7 @@ const OfferingsCommComponent = () => {
           </button>
         </div>
 
-        {/* Teach vision section */}
-        <div className='text-center mt-11'>
-          <h1 className="text-4xl font-black text-gray-900 mb-6 leading-tight">
-            Tech Vision India: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#004EA5] to-[#5598B5]">Training the Future</span>
-          </h1>
-          <p className="text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-            A Nationwide Initiative to Upskill Students from 6th Grade to Engineering
-            and above Level in Emerging Technologies.
-          </p>
-        </div>
+     
         {/* Advantages section */}
         <div className='text-center mt-11'>
           <h1 className="text-4xl font-black text-gray-900 mb-6 leading-tight">
