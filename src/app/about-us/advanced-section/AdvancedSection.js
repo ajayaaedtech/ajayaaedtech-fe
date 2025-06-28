@@ -1,3 +1,5 @@
+import { CheckCircleIcon } from "lucide-react";
+
 export default function AdvancedSection() {
     const phases = [
         {

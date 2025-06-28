@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChalkboardTeacher, FaGraduationCap, FaRobot, FaCode, FaPlay } from "react-icons/fa";
@@ -195,7 +194,7 @@ export default function HeroAjayaa() {
           >
             <div className="relative group ">
               {/* Image Container with better mobile styling */}
-              <div className="overflow-hidden rounded-none md:mt-20 mt-10">
+              {/* <div className="overflow-hidden rounded-none md:mt-20 mt-10">
                 <img
                   src="/full-ajayaa-hero.png"
                   alt="Learning Hero Illustration"
@@ -203,6 +202,17 @@ export default function HeroAjayaa() {
                   style={{
                     minHeight: '250px'
                   }}
+                />
+              </div> */}
+               <div className="overflow-hidden rounded-none md:mt-20 mt-10">Add commentMore actions
+                <Image
+                  src="/full-ajayaa-hero.png"
+                  alt="Learning Hero Illustration"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto object-contain object-center block scale-[1.01] -translate-x-[0.5px]"
+                  style={{ minHeight: '250px' }}
+                  priority
                 />
               </div>
 
