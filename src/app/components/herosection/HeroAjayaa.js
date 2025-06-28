@@ -195,17 +195,17 @@ export default function HeroAjayaa() {
           >
             <div className="relative group ">
               {/* Image Container with better mobile styling */}
-             <div className="overflow-hidden rounded-none md:mt-20 mt-10">
-  <Image
-    src="/full-ajayaa-hero.png"
-    alt="Learning Hero Illustration"
-    width={1920}
-    height={1080}
-    className="w-full h-auto object-contain object-center block scale-[1.01] -translate-x-[0.5px]"
-    style={{ minHeight: '250px' }}
-    priority
-  />
-</div>
+              <div className="overflow-hidden rounded-none md:mt-20 mt-10">
+                <Image
+                  src="/full-ajayaa-hero.png"
+                  alt="Learning Hero Illustration"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto object-contain object-center block scale-[1.01] -translate-x-[0.5px]"
+                  style={{ minHeight: '250px' }}
+                  priority
+                />
+              </div>
 
 
 
