@@ -2,6 +2,8 @@
 import expert from "/public/newsletter-icon.svg";
 import rightmostimage from "/public/b.png";
 import Image from "next/image";
+import Link from "next/link";
+
 
 export default function Footer() {
   return (
@@ -152,19 +154,12 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-6 text-sm">
-              <a
-                href="#"
+              <Link
+                href="/privacy-policy"
                 className="text-slate-400 hover:text-blue-400 transition-colors duration-300 hover:underline"
               >
                 Privacy Policy
-              </a>
-              <span className="text-slate-600">|</span>
-              <a
-                href="#"
-                className="text-slate-400 hover:text-blue-400 transition-colors duration-300 hover:underline"
-              >
-                Terms of Use
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -22,7 +22,7 @@ import {
   FaPlay,
   FaLightbulb,
   FaHandshake,
-  
+
   FaGlobe
 } from "react-icons/fa";
 import { PiCertificateBold } from "react-icons/pi";
@@ -97,7 +97,7 @@ const OfferingsComponent = () => {
       <div className="absolute w-[600px] h-[600px] bg-gradient-to-br from-[#004EA5]/30 to-[#5598B5]/30 rounded-full blur-3xl top-0 left-0 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
       <div className="absolute w-[400px] h-[400px] bg-gradient-to-tr from-[#5598B5]/20 to-[#004EA5]/20 rounded-full blur-2xl bottom-0 right-0 translate-x-1/2 translate-y-1/2 animate-pulse" />
       <div className="absolute w-[300px] h-[300px] bg-gradient-to-br from-[#004EA5]/15 to-[#01319E]/15 rounded-full blur-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-      
+
       {/* Animated Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -137,7 +137,7 @@ const OfferingsComponent = () => {
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
             Unlock your potential with cutting-edge technology education designed for the next generation of innovators
           </p>
-          
+
           {/* Tech Stack Carousel */}
           <motion.div
             className="flex justify-center items-center gap-8 mt-12 flex-wrap"
@@ -171,7 +171,7 @@ const OfferingsComponent = () => {
               🚀 What We Offer
             </span>
           </h2>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {offerings.map((item, i) => (
               <motion.div
@@ -184,19 +184,19 @@ const OfferingsComponent = () => {
               >
                 {/* Gradient Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                
+
                 <div className={`flex items-center justify-center w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${item.color} rounded-2xl shadow-xl group-hover:shadow-2xl transition-shadow duration-300`}>
                   {item.icon}
                 </div>
-                
+
                 <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors">
                   {item.title}
                 </h3>
-                
+
                 <p className="text-gray-300 font-medium mb-6 leading-relaxed">
                   {item.desc}
                 </p>
-                
+
                 <div className="flex justify-center gap-2 flex-wrap">
                   {item.highlights.map((highlight, idx) => (
                     <span
@@ -207,7 +207,7 @@ const OfferingsComponent = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <motion.div
                   className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"
                   whileHover={{ scale: 1.1 }}
@@ -234,7 +234,7 @@ const OfferingsComponent = () => {
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-blue-500  rounded-full" />
-            
+
             <div className="space-y-20">
               {objectives.map((obj, idx) => (
                 <motion.div
@@ -264,11 +264,11 @@ const OfferingsComponent = () => {
                         <span className="text-white font-bold">{obj.stats}</span>
                       </div>
                     </div>
-                    
+
                     <p className="text-gray-300 text-lg font-medium leading-relaxed mb-6">
                       {obj.desc}
                     </p>
-                    
+
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                       {obj.skills.map((skill, skillIdx) => (
                         <motion.div

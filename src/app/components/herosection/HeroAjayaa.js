@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChalkboardTeacher, FaGraduationCap, FaRobot, FaCode, FaPlay } from "react-icons/fa";
 import { MdOutlineSchool, MdTrendingUp, MdVerified } from "react-icons/md";
 import { HiSparkles, HiAcademicCap } from "react-icons/hi";
-import cbseIcon from '../herosection/CBSE_new_logo.png';
+import cbseIcon from './CBSE_new_logo.png';
 import collages from '../herosection/collages.png';
 import students from '../herosection/students-group.avif';
 import privateinstitues from '../herosection/private-institute.jpg';
@@ -18,6 +18,17 @@ const rotatingWords = [
   { text: "Skill-Based", color: "from-[#9C27B0] to-[#BA68C8]" },
   { text: "Career-Focused", color: "from-[#00BCD4] to-[#4DD0E1]" }
 ];
+
+// Deterministic random value generator
+function deterministicRandom(seed) {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    const char = seed.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash |= 0;
+  }
+  return (hash % 10000) / 10000;
+}
 
 export default function HeroAjayaa() {
   const [displayText, setDisplayText] = useState("");
@@ -33,14 +44,11 @@ export default function HeroAjayaa() {
 
     const timeout = setTimeout(() => {
       if (!isDeleting && displayText === currentWord) {
-        // Word is complete, pause then start deleting
         setTimeout(() => setIsDeleting(true), pauseTime);
       } else if (isDeleting && displayText === "") {
-        // Deletion complete, move to next word
         setIsDeleting(false);
         setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
       } else {
-        // Continue typing or deleting
         setDisplayText(prev => {
           if (isDeleting) {
             return currentWord.substring(0, prev.length - 1);
@@ -68,28 +76,36 @@ export default function HeroAjayaa() {
       <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-br from-[#0047FF]/8 to-[#00B386]/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-[250px] h-[250px] md:w-[400px] md:h-[400px] bg-gradient-to-tr from-[#FFA500]/8 to-[#FF6B6B]/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
-      {/* Floating Particles - Hidden on mobile for performance */}
+      {/* Floating Particles with deterministic positioning */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
-        {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-gradient-to-r from-[#0047FF]/20 to-[#00B386]/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              x: [-10, 10, -10],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
+        {[...Array(10)].map((_, i) => {
+          const seed = `particle-${i}`;
+          const left = 5 + deterministicRandom(seed + 'x') * 90;
+          const top = 5 + deterministicRandom(seed + 'y') * 90;
+          const duration = 3 + deterministicRandom(seed + 'd') * 2;
+          const delay = deterministicRandom(seed + 'delay') * 2;
+
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-gradient-to-r from-[#0047FF]/20 to-[#00B386]/20 rounded-full"
+              style={{
+                left: `${left}%`,
+                top: `${top}%`,
+              }}
+              animate={{
+                y: [-20, 20, -20],
+                x: [-10, 10, -10],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: duration,
+                repeat: Infinity,
+                delay: delay,
+              }}
+            />
+          );
+        })}
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 pb-12 md:pb-20">
@@ -119,7 +135,7 @@ export default function HeroAjayaa() {
         </motion.div>
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-          {/* Enhanced Left Side - Always Centered on Mobile */}
+          {/* Enhanced Left Side */}
           <motion.div
             className="flex-1 max-w-3xl text-center lg:text-left"
             initial={{ opacity: 0, x: -50 }}
@@ -134,11 +150,9 @@ export default function HeroAjayaa() {
               <span className="text-xs md:text-sm font-bold text-[#0047FF] tracking-wide">FUTURE-READY EDUCATION</span>
             </motion.div>
 
-            {/* Mobile-Responsive Heading */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6">
               <span className="text-gray-900 block mb-2">Upskill Students with</span>
 
-              {/* Fixed Typewriter Container - No Extra Space */}
               <div className="relative min-h-[1.2em] flex items-center justify-center lg:justify-start mb-2">
                 <span
                   className={`bg-gradient-to-r ${rotatingWords[currentWordIndex].color} bg-clip-text text-transparent font-extrabold`}
@@ -168,7 +182,6 @@ export default function HeroAjayaa() {
               <span className="text-[#FFA500] font-semibold">DevOps</span>, and emerging technologies.
             </p>
 
-            {/* Mobile-Responsive Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center lg:justify-start">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -181,20 +194,17 @@ export default function HeroAjayaa() {
                   <FaPlay className="text-xs md:text-sm group-hover:translate-x-1 transition-transform" />
                 </span>
               </motion.button>
-
-
             </div>
           </motion.div>
 
-          {/* Enhanced Right Side Image - Better Mobile Layout */}
+          {/* Enhanced Right Side Image */}
           <motion.div
             className="flex-1 max-w-md lg:max-w-lg relative mt-8 lg:mt-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <div className="relative group ">
-              {/* Image Container with better mobile styling */}
+            <div className="relative group">
               <div className="overflow-hidden rounded-none md:mt-20 mt-10">
                 <Image
                   src="/full-ajayaa-hero.png"
@@ -207,11 +217,7 @@ export default function HeroAjayaa() {
                 />
               </div>
 
-
-
-
-
-              {/* Floating Badges - Responsive Positioning */}
+              {/* Floating Badges with deterministic animation */}
               <motion.div
                 className="absolute -top-3 -left-3 md:-top-6 md:-left-6 bg-gradient-to-r from-[#0047FF] to-[#00B386] text-white px-3 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl"
                 animate={{ y: [-3, 3, -3] }}
@@ -235,7 +241,6 @@ export default function HeroAjayaa() {
                 </div>
               </motion.div>
 
-              {/* Additional floating element - Hidden on small screens */}
               <motion.div
                 className="hidden md:block absolute top-1/4 -right-6 lg:-right-8 bg-gradient-to-r from-[#9C27B0] to-[#BA68C8] text-white px-3 py-2 md:px-4 md:py-2 rounded-lg md:rounded-xl shadow-lg"
                 animate={{ x: [-3, 3, -3], rotate: [-1, 1, -1] }}
@@ -250,7 +255,7 @@ export default function HeroAjayaa() {
           </motion.div>
         </div>
 
-        {/* Enhanced Institution Logos - Mobile Responsive */}
+        {/* Enhanced Institution Logos */}
         <motion.div
           className="mt-12 md:mt-24 text-center"
           initial={{ opacity: 0, y: 30 }}
