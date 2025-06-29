@@ -9,6 +9,7 @@ import collages from '../herosection/collages.png';
 import students from '../herosection/students-group.avif';
 import privateinstitues from '../herosection/private-institute.jpg';
 import Image from "next/image";
+import Link from "next/link";
 
 const rotatingWords = [
   { text: "Future-Ready", color: "from-[#0047FF] to-[#00B386]" },
@@ -169,19 +170,19 @@ export default function HeroAjayaa() {
 
             {/* Mobile-Responsive Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center lg:justify-start">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-[#003399] to-[#00A0ED]/90 text-white font-bold px-6 py-3 md:px-10 md:py-5 rounded-xl md:rounded-2xl shadow-2xl border border-[#0047FF]/20 group overflow-hidden relative"
-              >
-                <span className="flex items-center justify-center gap-2 md:gap-3 relative z-10">
-                  <span className="text-lg md:text-2xl"></span>
-                  <span className="text-sm md:text-lg">Explore Courses Now</span>
-                  <FaPlay className="text-xs md:text-sm group-hover:translate-x-1 transition-transform" />
-                </span>
-              </motion.button>
-
-
+              <Link href="/courses">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-gradient-to-r from-[#003399] to-[#00A0ED]/90 text-white font-bold px-6 py-3 md:px-10 md:py-5 rounded-xl md:rounded-2xl shadow-2xl border border-[#0047FF]/20 group overflow-hidden relative"
+                >
+                  <span className="flex items-center justify-center gap-2 md:gap-3 relative z-10">
+                    <span className="text-lg md:text-2xl"></span>
+                    <span className="text-sm md:text-lg">Explore Courses Now</span>
+                    <FaPlay className="text-xs md:text-sm group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
 
@@ -204,7 +205,7 @@ export default function HeroAjayaa() {
                   }}
                 />
               </div> */}
-               <div className="overflow-hidden rounded-none md:mt-20 mt-10">Add commentMore actions
+              <div className="overflow-hidden rounded-none md:mt-20 mt-10">Add commentMore actions
                 <Image
                   src="/full-ajayaa-hero.png"
                   alt="Learning Hero Illustration"

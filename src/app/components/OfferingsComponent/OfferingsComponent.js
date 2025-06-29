@@ -303,7 +303,7 @@ const OfferingsComponent = () => {
             <p className="text-xl text-gray-300 mb-8">
               Join thousands of young innovators who are already building tomorrow&rsquo;s technology
             </p>
-            <div className="flex justify-center gap-6 flex-wrap">
+            {/* <div className="flex justify-center gap-6 flex-wrap">
               <motion.button
                 className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 flex items-center gap-3"
                 whileHover={{ scale: 1.05 }}
@@ -318,7 +318,7 @@ const OfferingsComponent = () => {
               >
                 <FaGlobe /> Explore Programs
               </motion.button>
-            </div>
+            </div> */}
           </div>
         </motion.div>
       </div>

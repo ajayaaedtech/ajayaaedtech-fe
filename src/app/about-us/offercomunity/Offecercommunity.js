@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import AboutCompany from '../aboutcontent/AboutCompany';
 import { CheckCircleIcon } from 'lucide-react';
+import Link from 'next/link';
 
 const OfferingsCommComponent = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -276,13 +277,15 @@ const OfferingsCommComponent = () => {
         {/* Call to Action */}
         <div className="text-center mt-20 lg:mt-32">
           <button className="group relative px-12 py-4 lg:px-16 lg:py-5 bg-gradient-to-r from-[#004EA5] via-[#01319E] to-[#5598B5] text-white font-bold text-lg lg:text-xl rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
-            <span className="relative z-10">Explore Our Programs</span>
+            <Link href={"/courses"} >
+              <span className="relative z-10">Explore Our Programs</span>
+            </Link>
             <div className="absolute inset-0 bg-gradient-to-r from-[#5598B5] via-[#004EA5] to-[#01319E] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </div>
 
-     
-        
+
+
 
       </div>
     </div>

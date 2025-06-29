@@ -10,14 +10,12 @@ export default function ContactPage() {
       <div className="block border min-h-50 w-full">
         <ContectHomeDesign />
       </div>
-
       <ContactTitleInfo />
-      
       <div className="mt-10  mx-auto">
         <ContactForm />
       </div>
-      <AdditonalInfo />
-      <Footer />
+      {/* <AdditonalInfo /> */}
+      {/* <Footer /> */}
     </main>
   );
 }

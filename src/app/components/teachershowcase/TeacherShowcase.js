@@ -48,17 +48,18 @@ const
           {/* Header Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#004EA5' }}>
-              All teachers teach.
+              Teaching is common But
             </h1>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8">
               <span style={{ color: '#004EA5' }}>Greatest </span>
               <span
                 className="relative inline-block"
                 style={{ color: '#01319E' }}
               >
-                teachers
+                teacher&#39;s
+
                 {/* Desktop Underline - Wavy/Brush Effect */}
-                <div className="hidden md:block absolute -bottom-2 left-0 w-full">
+                <div className=" block absolute -bottom-2 left-0 w-full">
                   <svg
                     viewBox="0 0 200 20"
                     className="w-full h-4"
@@ -82,27 +83,21 @@ const
                   </svg>
                 </div>
                 {/* Mobile Underline - Simple Gradient */}
-                <div
-                  className="md:hidden absolute bottom-0 left-0 w-full h-3 -mb-1 rounded-full"
-                  style={{
-                    background: 'linear-gradient(90deg, #FFEB3B 0%, #FFC107 50%, #FFEB3B 100%)',
-                    transform: 'skew(-12deg)'
-                  }}
-                ></div>
+
               </span>
               <span style={{ color: '#004EA5' }}> inspire</span>
             </h2>
           </div>
 
           {/* Feature Points */}
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16 ">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 p-3 rounded-xl shadow-sm" style={{ backgroundColor: '#E3F2FD' }}>
                 <GraduationCap size={28} style={{ color: '#004EA5' }} />
               </div>
               <div>
                 <p className="text-base md:text-lg font-medium leading-relaxed" style={{ color: '#01319E' }}>
-               Our dedicated teachers from top institutions have years of experience guiding learners of every age — from curious kids to lifelong learners.
+                  Our dedicated teachers from top institutions have years of experience guiding learners of every age — from curious kids to lifelong learners.
                 </p>
               </div>
             </div>
@@ -124,17 +119,17 @@ const
               </div>
               <div>
                 <p className="text-base md:text-lg font-medium leading-relaxed" style={{ color: '#01319E' }}>
-                 Experienced faculty from premier institutions, skilled in teaching students of all age groups.
+                  Experienced faculty from premier institutions, skilled in teaching students of all age groups.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Teachers Grid */}
-          <div className="relative">
+          <div className="relative ">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
               {teachers.map((teacher, index) => (
-                <div key={index} className="relative group">
+                <div key={index} className="relative group bg-gray-700 rounded-2xl md:rounded-3xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
                   {/* Teacher Image */}
                   <div className="relative mb-4  overflow-hidden rounded-2xl md:rounded-3xl shadow-lg group-hover:shadow-xl transition-all duration-300 h-120 md:h-80">
                     {!imageErrors[index] ? (
@@ -147,7 +142,7 @@ const
                       />
                     ) : (
                       <div
-                        className="w-full h-full flex items-center justify-center text-white font-semibold text-lg transition-all duration-300 group-hover:brightness-110"
+                        className="w-full h-full flex items-center justify-center text-white font-semibold text-lg transition-all duration-300 group-hover:brightness-110 "
                         style={{ backgroundColor: '#5598B5' }}
                       >
                         <div className="text-center">
@@ -162,7 +157,7 @@ const
 
                   {/* Teacher Info Card */}
                   <div
-                    className="p-4 md:p-6 rounded-xl md:rounded-2xl text-white shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1"
+                    className="p-4 md:p-6 rounded-xl md:rounded-2xl text-white shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 "
                     style={{ backgroundColor: '#01319E' }}
                   >
                     <h3 className="text-lg md:text-xl font-bold mb-2 truncate">{teacher.name}</h3>

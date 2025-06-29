@@ -56,8 +56,8 @@ export default function ContactInfo() {
         )}
       </AnimatePresence>
 
-      <motion.a
-        href="https://wa.me/1234567890"
+      {/* <motion.a
+        href="https://wa.me/+918019037799"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white p-3 rounded-full shadow-xl transition-all flex items-center justify-center relative overflow-hidden"
@@ -74,7 +74,7 @@ export default function ContactInfo() {
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 0.1 }}
         />
-      </motion.a>
+      </motion.a> */}
     </div>
   );
 }

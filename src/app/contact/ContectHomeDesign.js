@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React from 'react';
 
 export default function ContectHomeDesign() {
@@ -43,22 +44,18 @@ export default function ContectHomeDesign() {
           
           <div className="flex flex-wrap gap-4 pt-6 animate-fade-in-delay-4">
             <button className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full text-white font-semibold hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105 active:scale-95">
+             <Link href="/" >
               <span className="flex items-center gap-2">
                 Get Started
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </span>
+
+             </Link>
             </button>
             
-            <button className="group px-8 py-4 border-2 border-blue-400 rounded-full text-blue-300 font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 backdrop-blur-sm">
-              <span className="flex items-center gap-2">
-                Learn More
-                <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </span>
-            </button>
+           
           </div>
 
           {/* Tech badges */}
