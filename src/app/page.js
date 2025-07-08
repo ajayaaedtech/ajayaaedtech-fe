@@ -8,12 +8,14 @@ import ProjectOverview from "./components/projectoverview/ProjectOverview";
 import ContactInfo from "./helper-components/ContactInfo";
 import MainSectionHome from "./components/miansectionhome/MainSectionHome";
 import HorizontalScrollingCards from "./components/miansectionhome/HorizontalScrollingCards";
+import FutureReadyKids from "./components/futurereadykids/FutureReadyKids";
 
 export default function Home() {
   return (
     <>
       {/* <HeroAjayaa /> */}
       <MainSectionHome/>
+      <FutureReadyKids/>
      {/* <HorizontalScrollingCards/> */}
       {/* <CourseCategories /> testing dmuu */}
       <TeacherShowcase/>
