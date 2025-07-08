@@ -4,10 +4,10 @@ import { ChevronDown, ChevronUp, Code, Brain, Cpu, Globe, Shield, Users, BookOpe
 const techCourses = {
   middleSchool: [
     {
-      title: 'Introduction to AI (Grade 7–8)',
-      concepts: ['What is AI', 'History', 'Real-World Use', 'AI Ethics', 'Future Trends'],
-      tools: ['Teachable Machine', 'QuickDraw'],
-      output: 'AI Activity Workbook + Project',
+      title: 'AI Foundations (Grades 6–8)',
+      concepts: ['What is AI?', 'Applications in daily life', 'Types of AI (ANI, AGI, ASI)', 'AI vs. Human Intelligence', 'AI in Phones, Games, TVs, Hospitals, Farming'],
+      tools: ['Voice Assistants', 'AI-powered games', 'Smart devices'],
+      output: 'AI daily-life journal + presentation',
       icon: Brain,
       color: 'from-violet-500 to-purple-600',
       bgColor: 'bg-violet-50',
@@ -15,68 +15,34 @@ const techCourses = {
       borderColor: 'border-violet-200'
     },
     {
+      title: 'Scratch Programming (Grades 6–7)',
+      concepts: ['Block-based coding', 'Animation basics', 'Game design logic', 'Problem solving'],
+      activity: ['Build a simple animation', 'Create an interactive game'],
+      output: 'Scratch projects',
+      icon: Code,
+      color: 'from-yellow-500 to-orange-500',
+      bgColor: 'bg-yellow-50',
+      textColor: 'text-yellow-800',
+      borderColor: 'border-yellow-200'
+    },
+    {
       title: 'Python Essentials (Grade 8–9)',
-      concepts: ['Variables', 'Loops', 'Conditionals', 'Functions', 'Data Types'],
-      activity: ['Build a Calculator', 'Quiz App'],
-      output: 'Python mini projects',
+      concepts: ['Variables', 'Loops', 'Conditionals', 'Functions'],
+      activity: ['Simple calculator', 'Mini quiz app'],
+      output: 'Python practice programs',
       icon: Code,
       color: 'from-emerald-500 to-green-600',
       bgColor: 'bg-emerald-50',
       textColor: 'text-emerald-800',
       borderColor: 'border-emerald-200'
-    },
-    {
-      title: 'Web Design Basics (Grade 8–9)',
-      concepts: ['HTML Structure', 'CSS Styling', 'Basic JavaScript', 'Responsive Design'],
-      activity: ['Create Personal Page', 'Simple Games'],
-      output: 'Personal website portfolio',
-      icon: Globe,
-      color: 'from-blue-500 to-cyan-600',
-      bgColor: 'bg-blue-50',
-      textColor: 'text-blue-800',
-      borderColor: 'border-blue-200'
-    },
+    }
   ],
   highSchool: [
     {
-      title: 'Robotics & Automation with DIY Kits (Grade 9–10)',
-      concepts: ['Sensors', 'Motors', 'Logic', 'Programming', 'Circuit Design'],
-      activities: ['Line-follower robot', 'Smart light'],
-      output: 'DIY robotics model with report',
-      icon: Cpu,
-      color: 'from-orange-500 to-amber-600',
-      bgColor: 'bg-orange-50',
-      textColor: 'text-orange-800',
-      borderColor: 'border-orange-200'
-    },
-    {
-      title: 'Mobile App Development (Grade 10–11)',
-      concepts: ['App Design', 'User Interface', 'Basic Programming', 'Testing'],
-      activities: ['Simple Calculator App', 'To-Do List App'],
-      output: 'Working mobile application',
-      icon: Target,
-      color: 'from-pink-500 to-rose-600',
-      bgColor: 'bg-pink-50',
-      textColor: 'text-pink-800',
-      borderColor: 'border-pink-200'
-    },
-  ],
-  seniorAndCollege: [
-    {
-      title: 'Advanced Python with Problem Solving',
-      concepts: ['Real coding problems', 'Logic building', 'Algorithms', 'Data Structures'],
-      output: 'Real-world Python apps',
-      icon: Code,
-      color: 'from-blue-500 to-indigo-600',
-      bgColor: 'bg-blue-50',
-      textColor: 'text-blue-800',
-      borderColor: 'border-blue-200'
-    },
-    {
-      title: 'AI & Machine Learning (ML) Foundations',
-      useCases: ['Face recognition', 'Chatbots', 'Recommendation Systems'],
-      tools: ['scikit-learn', 'Jupyter', 'Teachable Machine'],
-      output: 'AI model demo project',
+      title: 'AI Applications & Ethics (Grades 9–10)',
+      concepts: ['Machine Learning', 'Deep Learning', 'Narrow vs General AI', 'AI Ethics', 'Bias and Fairness'],
+      tools: ['Teachable Machine', 'QuickDraw'],
+      output: 'AI use-case research + infographic',
       icon: Brain,
       color: 'from-indigo-500 to-purple-600',
       bgColor: 'bg-indigo-50',
@@ -84,30 +50,54 @@ const techCourses = {
       borderColor: 'border-indigo-200'
     },
     {
-      title: 'Web Development (HTML, CSS, JavaScript, React)',
-      concepts: ['Build static and dynamic websites', 'Responsive Design', 'User Experience'],
-      output: 'Personal portfolio website',
-      icon: Globe,
-      color: 'from-teal-500 to-cyan-600',
-      bgColor: 'bg-teal-50',
-      textColor: 'text-teal-800',
-      borderColor: 'border-teal-200'
-    },
-    {
-      title: 'Data Science & Visualization',
-      concepts: ['Data cleaning', 'Graphing', 'Insights', 'Statistical Analysis'],
-      tools: ['Pandas', 'Matplotlib', 'Excel'],
-      output: 'Mini analytics dashboard project',
-      icon: Target,
+      title: 'Data Science with Python (Grade 10)',
+      concepts: ['Data types', 'Lists and Dictionaries', 'Basic data visualization'],
+      tools: ['Pandas', 'Matplotlib', 'Jupyter Notebook'],
+      output: 'Mini data insights project',
+      icon: Cpu,
       color: 'from-pink-500 to-rose-600',
       bgColor: 'bg-pink-50',
       textColor: 'text-pink-800',
       borderColor: 'border-pink-200'
     },
     {
-      title: 'DevOps & Cloud Tools (For B.Tech/IT)',
-      tools: ['Git', 'Docker', 'Jenkins', 'CI/CD pipelines'],
-      output: 'Deploy an app using DevOps pipeline',
+      title: 'Web Development Basics',
+      concepts: ['HTML & CSS', 'JavaScript intro', 'Page structure', 'Responsive design'],
+      activity: ['Build a personal web page'],
+      output: 'Static portfolio website',
+      icon: Globe,
+      color: 'from-blue-500 to-cyan-600',
+      bgColor: 'bg-blue-50',
+      textColor: 'text-blue-800',
+      borderColor: 'border-blue-200'
+    }
+  ],
+  seniorAndCollege: [
+    {
+      title: 'Advanced Python & Algorithms',
+      concepts: ['OOP in Python', 'Recursion', 'Sorting & Searching', 'Problem-solving techniques'],
+      output: 'Python-based problem sets & challenges',
+      icon: Code,
+      color: 'from-blue-500 to-indigo-600',
+      bgColor: 'bg-blue-50',
+      textColor: 'text-blue-800',
+      borderColor: 'border-blue-200'
+    },
+    {
+      title: 'Machine Learning Foundations',
+      concepts: ['Supervised vs Unsupervised Learning', 'Model training', 'Evaluation'],
+      tools: ['scikit-learn', 'Jupyter', 'Teachable Machine'],
+      output: 'Simple AI model demo',
+      icon: Brain,
+      color: 'from-purple-600 to-pink-600',
+      bgColor: 'bg-purple-50',
+      textColor: 'text-purple-800',
+      borderColor: 'border-purple-200'
+    },
+    {
+      title: 'DevOps & Cloud Tools',
+      tools: ['Git', 'Docker', 'Jenkins', 'CI/CD pipeline basics'],
+      output: 'Deploy a sample project using CI/CD tools',
       icon: Zap,
       color: 'from-yellow-500 to-orange-600',
       bgColor: 'bg-yellow-50',
@@ -115,22 +105,22 @@ const techCourses = {
       borderColor: 'border-yellow-200'
     },
     {
-      title: 'Cybersecurity Essentials',
-      concepts: ['Phishing', 'Encryption', 'Password protection', 'Network Security'],
-      activity: ['Simulate a secure login system'],
-      output: 'Cyber Hygiene Report & Simulation',
+      title: 'Cybersecurity Awareness',
+      concepts: ['Digital hygiene', 'Phishing & Passwords', 'Encryption basics'],
+      activity: ['Create a safe login simulation'],
+      output: 'Cyber Safety Report',
       icon: Shield,
       color: 'from-red-500 to-red-600',
       bgColor: 'bg-red-50',
       textColor: 'text-red-800',
       borderColor: 'border-red-200'
-    },
+    }
   ],
   teachers: [
     {
-      title: 'Pedagogy for Tech Teaching',
-      concepts: ['Teach coding, AI, ML using stories & simulations', 'Interactive Learning', 'Assessment Methods'],
-      output: 'Sample lesson plans, classroom activity bank',
+      title: 'Pedagogy for Tech Education',
+      concepts: ['Teaching through projects', 'Using storytelling for tech topics', 'Creating engaging classroom simulations'],
+      output: 'Lesson plans + interactive teaching toolkit',
       icon: BookOpen,
       color: 'from-purple-500 to-violet-600',
       bgColor: 'bg-purple-50',
@@ -138,9 +128,9 @@ const techCourses = {
       borderColor: 'border-purple-200'
     },
     {
-      title: 'Curriculum Integration & Evaluation',
-      concepts: ['Align with NEP 2020', 'Create rubrics', 'Learning Outcomes'],
-      output: 'Sample school tech curriculum',
+      title: 'Curriculum Integration (NEP 2020)',
+      concepts: ['Linking tech topics to core subjects', 'Learning Outcomes', 'Rubric design'],
+      output: 'Integrated curriculum samples',
       icon: Award,
       color: 'from-emerald-500 to-teal-600',
       bgColor: 'bg-emerald-50',
@@ -148,17 +138,18 @@ const techCourses = {
       borderColor: 'border-emerald-200'
     },
     {
-      title: 'Tools & LMS Training',
-      concepts: ['LMS operation', 'Assessment', 'Live sessions', 'Digital Tools'],
-      output: 'Recorded demo + LMS certification',
+      title: 'Tools & LMS Mastery',
+      concepts: ['Digital classroom tools', 'Running live & recorded sessions', 'Assessment via LMS'],
+      output: 'Demo class recordings + certification',
       icon: Users,
       color: 'from-cyan-500 to-blue-600',
       bgColor: 'bg-cyan-50',
       textColor: 'text-cyan-800',
       borderColor: 'border-cyan-200'
-    },
-  ],
+    }
+  ]
 };
+
 
 const CourseCard = ({ course }) => {
   const [showAllConcepts, setShowAllConcepts] = useState(false);

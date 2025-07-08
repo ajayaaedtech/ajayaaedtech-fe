@@ -124,6 +124,7 @@ const MainSectionHome = () => {
           </div>
         </div>
       </div>
+     
       <HorizontalScrollingCards />
 
     </div>

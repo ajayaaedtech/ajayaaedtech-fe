@@ -19,19 +19,9 @@ const HorizontalScrollingCards = () => {
       icon: "🎨",
     },
     {
-      title: "GW with AI-Powered Scripts",
-      description: "Generate content effortlessly",
-      icon: "✍️",
-    },
-    {
       title: "Prepare School Presentations",
       description: "Confidence Using AI Tools",
       icon: "📊",
-    },
-    {
-      title: "Speak and Present With AI",
-      description: "Assisted Storytelling",
-      icon: "🎤",
     },
     {
       title: "Captivate Audience",
@@ -64,7 +54,7 @@ const HorizontalScrollingCards = () => {
 
   return (
     <div className="py-8 px-4 bg-gray-50">
-      <h2 className="text-2xl font-bold text-center mb-8">AI Learning Features</h2>
+       <h2 className="text-2xl font-bold text-center mb-8">AI Learning Features</h2>
       
       <div 
         ref={scrollContainerRef}
