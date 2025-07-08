@@ -59,13 +59,13 @@ const objectives = [
     skills: ["AI & ML", "IoT Projects", "Web Development", "Mobile Apps"],
     stats: ""
   },
-  {
-    title: "Vibrant Creator Community",
-    desc: "To build a community of passionate learners, creators, and change-makers who can contribute meaningfully to the digital economy.",
-    icon: <FaUsers />,
-    skills: ["Peer Learning", "Mentorship", "Competitions", "Showcases"],
-    stats: "10,000+ Members"
-  },
+  // {
+  //   title: "Vibrant Creator Community",
+  //   desc: "To build a community of passionate learners, creators, and change-makers who can contribute meaningfully to the digital economy.",
+  //   icon: <FaUsers />,
+  //   skills: ["Peer Learning", "Mentorship", "Competitions", "Showcases"],
+  //   stats: "10,000+ Members"
+  // },
   {
     title: "Future-Ready Mindset",
     desc: "To ensure that our learners are equipped for both present and future job markets. To foster a lifelong learning mindset by encouraging innovation, critical thinking, and problem-solving beyond the traditional curriculum",

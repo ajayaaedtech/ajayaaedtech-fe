@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Code, Brain, Cpu, Globe, Shield, Users, BookOpen, Award, Zap, Target, Star, ArrowRight, Plus } from 'lucide-react';
+import { ChevronDown, ChevronUp, Code, Brain, Cpu, Globe, Shield, Users, BookOpen, Award, Zap, Target, Star, ArrowRight, BookOpenCheck  } from 'lucide-react';
 
 const techCourses = {
   middleSchool: [
@@ -165,7 +165,7 @@ const CourseCard = ({ course }) => {
   const IconComponent = course.icon;
 
   return (
-    <div className={`${course.bgColor} rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border ${course.borderColor} transform hover:-translate-y-1 h-full flex flex-col group relative overflow-hidden`}>
+    <div className={`${course.bgColor}  rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border ${course.borderColor} transform hover:-translate-y-1 h-full flex flex-col group relative overflow-hidden`}>
       <div className={`absolute inset-0 bg-gradient-to-br ${course.color} opacity-0 group-hover:opacity-8 transition-opacity duration-300`}></div>
       
       <div className="flex items-start gap-3 mb-4 relative z-10">
@@ -183,22 +183,22 @@ const CourseCard = ({ course }) => {
         {course.concepts && (
           <div className="bg-white/70 backdrop-blur-sm rounded-xl p-3 border border-white/50">
             <div className="flex items-center gap-2 mb-2">
-              <Star className={`w-4 h-4 ${course.textColor}`} />
-              <h4 className={`text-sm font-bold ${course.textColor}`}>
-                Key Concepts
+              <BookOpenCheck  className={`w-5 h-5 ${course.textColor}`} />
+              <h4 className={`text-md font-bold ${course.textColor}`}>
+                Core Ideas
               </h4>
             </div>
             <div className="space-y-1">
               {course.concepts.slice(0, showAllConcepts ? course.concepts.length : 3).map((c, idx) => (
                 <div key={idx} className="flex items-center gap-2">
                   <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${course.color}`}></div>
-                  <span className="text-xs font-semibold text-gray-700">{c}</span>
+                  <span className="text-md font-semibold text-gray-700">{c}</span>
                 </div>
               ))}
               {course.concepts.length > 3 && (
                 <button 
                   onClick={() => setShowAllConcepts(!showAllConcepts)}
-                  className={`mt-2 text-xs font-medium ${course.textColor} flex items-center gap-1 hover:underline`}
+                  className={`mt-2 text-md font-medium ${course.textColor} flex items-center gap-1 hover:underline`}
                 >
                   {showAllConcepts ? 'Show less' : `Load more (${course.concepts.length - 3})`}
                   {showAllConcepts ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
@@ -210,11 +210,11 @@ const CourseCard = ({ course }) => {
 
         {course.tools && (
           <div className="bg-white/50 backdrop-blur-sm rounded-xl p-3 border border-white/40">
-            <h4 className={`text-xs font-bold ${course.textColor} mb-2 flex items-center gap-1`}>
-              <Cpu className="w-3 h-3" />
+            <h4 className={`text-md font-bold ${course.textColor} mb-2 flex items-center gap-1`}>
+              <Cpu className="w-6 h-6" />
               Tools & Technologies
             </h4>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex  flex-wrap gap-1">
               {course.tools.map((tool, idx) => (
                 <span key={idx} className={`bg-gradient-to-r ${course.color} text-white px-2 py-1 rounded-full text-xs font-medium shadow-sm`}>
                   {tool}
@@ -226,7 +226,7 @@ const CourseCard = ({ course }) => {
 
         {(course.activity || course.activities) && (
           <div className="bg-white/50 backdrop-blur-sm rounded-xl p-3 border border-white/40">
-            <h4 className={`text-xs font-bold ${course.textColor} mb-2 flex items-center gap-1`}>
+            <h4 className={`text-md font-bold ${course.textColor} mb-2 flex items-center gap-1`}>
               <ArrowRight className="w-3 h-3" />
               Hands-on Activities
             </h4>
@@ -234,7 +234,7 @@ const CourseCard = ({ course }) => {
               {(course.activity || course.activities).map((act, idx) => (
                 <div key={idx} className="flex items-center gap-2">
                   <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${course.color}`}></div>
-                  <span className="text-xs font-medium text-gray-700">{act}</span>
+                  <span className="text-sm font-medium text-gray-700">{act}</span>
                 </div>
               ))}
             </div>
@@ -344,8 +344,8 @@ export default function TechCourses() {
         }
       `}</style>
       
-    <div className="w-full min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-6xl mx-auto">
+    <div className="w-full  min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
         <header className="mb-12 text-center">
           <div className="relative">
             <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-gray-800 via-blue-700 to-purple-700 bg-clip-text text-transparent mb-4">

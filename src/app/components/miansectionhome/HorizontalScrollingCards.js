@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const HorizontalScrollingCards = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -40,27 +40,27 @@ const HorizontalScrollingCards = () => {
     }
   ];
 
-  const animateScroll = () => {
+  const animateScroll = useCallback(() => {
     if (!isHovered && scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft += scrollSpeed;
-      
-      // Reset to start if reached end
+
       if (scrollContainerRef.current.scrollLeft >= 
           scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth) {
         scrollContainerRef.current.scrollLeft = 0;
       }
     }
     animationRef.current = requestAnimationFrame(animateScroll);
-  };
+  }, [isHovered]); // ← include any variables it uses from outer scope
 
-  useEffect(() => {
+
+ useEffect(() => {
     animationRef.current = requestAnimationFrame(animateScroll);
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isHovered]);
+  }, [animateScroll]); // ← safe now
 
   return (
     <div className="py-8 px-4 bg-gray-50">
