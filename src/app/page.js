@@ -8,7 +8,7 @@ import ProjectOverview from "./components/projectoverview/ProjectOverview";
 import ContactInfo from "./helper-components/ContactInfo";
 import MainSectionHome from "./components/miansectionhome/MainSectionHome";
 import HorizontalScrollingCards from "./components/miansectionhome/HorizontalScrollingCards";
-
+import BrochureDownloadSection from "./components/brochureui/BrochureDownloadSection";
 export default function Home() {
   return (
     <>
@@ -20,6 +20,7 @@ export default function Home() {
       <WhyChooseUs />
       <ProjectOverview />
       <OfferingsComponent/>
+      <BrochureDownloadSection/>
       {/* <Footer /> */}
       <ContactInfo/>
     </>

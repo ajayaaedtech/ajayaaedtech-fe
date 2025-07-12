@@ -32,7 +32,7 @@ const offerings = [
     title: "Hybrid Learning Experience",
     desc: "Online & Hybrid delivery model via LMS and local partner institutions.",
     icon: <FaLaptopCode className="text-white text-3xl" />,
-    highlights: ["24/7 Access", "Live Sessions", "Online Labs"],
+    highlights: ["24/7 Access", "Recording Sessions", "Online Labs"],
     color: "from-blue-500 to-purple-600"
   },
   {
@@ -289,7 +289,7 @@ const OfferingsComponent = () => {
         </motion.div>
 
         {/* Call to Action */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -303,24 +303,8 @@ const OfferingsComponent = () => {
             <p className="text-xl text-gray-300 mb-8">
               Join thousands of young innovators who are already building tomorrow&rsquo;s technology
             </p>
-            {/* <div className="flex justify-center gap-6 flex-wrap">
-              <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 flex items-center gap-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <FaPlay /> Start Your Journey
-              </motion.button>
-              <motion.button
-                className="px-8 py-4 bg-white/10 border border-white/30 text-white font-bold rounded-2xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300 flex items-center gap-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <FaGlobe /> Explore Programs
-              </motion.button>
-            </div> */}
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );

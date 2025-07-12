@@ -150,7 +150,7 @@ export default function ProjectOverview() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
+        {/* <div className="text-center mt-16">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white shadow-2xl">
             <h3 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
@@ -160,7 +160,7 @@ export default function ProjectOverview() {
               Explore Programs
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
