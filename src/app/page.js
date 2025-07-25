@@ -9,6 +9,7 @@ import ContactInfo from "./helper-components/ContactInfo";
 import MainSectionHome from "./components/miansectionhome/MainSectionHome";
 import HorizontalScrollingCards from "./components/miansectionhome/HorizontalScrollingCards";
 import BrochureDownloadSection from "./components/brochureui/BrochureDownloadSection";
+import EdTechConsultancy from "./components/EdTechConsultancy/EdTechConsultancy";
 export default function Home() {
   return (
     <>
@@ -16,7 +17,8 @@ export default function Home() {
       <MainSectionHome/>
      {/* <HorizontalScrollingCards/> */}
       {/* <CourseCategories /> testing dmuu */}
-      <TeacherShowcase/>
+      {/* <TeacherShowcase/> */}
+      <EdTechConsultancy/>
       <WhyChooseUs />
       <ProjectOverview />
       <OfferingsComponent/>

@@ -43,14 +43,14 @@ export default function MainMenu() {
         </div>
 
         {/* Center: Book a Seat (mobile only) */}
-      <div className="flex-1 flex justify-center md:hidden">
-  <button
-    onClick={() => setOpenModal(true)}
-    className="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:shadow-lg transition duration-300"
-  >
-    Book a Seat
-  </button>
-</div>
+        <div className="flex-1 flex justify-center md:hidden">
+          <button
+            onClick={() => setOpenModal(true)}
+            className="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:shadow-lg transition duration-300"
+          >
+            Book a Seat
+          </button>
+        </div>
 
 
         {/* Right: Menu button (mobile only) */}
