@@ -6,4 +6,4 @@ Allow: /
 Host: https://ajayaaedtech.com
 
 # Sitemaps
-Sitemap: https://ajayaaedtech.com/sitemap.xml
+Sitemap: https://ajayaaedtech.com/sitemap-0.xml
