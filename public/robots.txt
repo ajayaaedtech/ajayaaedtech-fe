@@ -1,3 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://ajayaaedtech.com
+
+# Sitemaps
+Sitemap: https://ajayaaedtech.com/sitemap.xml
