@@ -20,10 +20,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// app/layout.js
 export const metadata = {
   title: "Ajayaa Edtech",
-  description: "we provides courses",
+  description: "Tech Vision India - Training the Future",
+  keywords: ['ajayaa', 'edtech', 'tech training'],
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
+
 
 export default function RootLayout({ children }) {
   return (

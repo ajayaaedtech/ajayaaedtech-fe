@@ -92,7 +92,7 @@ export default function Footer() {
 
             <div className="mt-6 sm:mt-8 space-y-2 sm:space-y-3">
               {[
-                { label: 'Email Us', href: 'mailto:your@email.com' },
+                { label: 'Email Us', href: 'mailto:ajayaaedtech@gmail.com' },
               ].map(({ label, href }) => (
                 <a
                   key={label}
