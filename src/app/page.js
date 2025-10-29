@@ -10,17 +10,19 @@ import MainSectionHome from "./components/miansectionhome/MainSectionHome";
 import HorizontalScrollingCards from "./components/miansectionhome/HorizontalScrollingCards";
 import BrochureDownloadSection from "./components/brochureui/BrochureDownloadSection";
 import EdTechConsultancy from "./components/EdTechConsultancy/EdTechConsultancy";
+import TrainingServices from "./components/TrainingServices";
+import NewFeaturedCourses from "./components/featuredcourses/NewFeaturedCourses";
 
 export const metadata = {
   title: "Ajayaa Edtech - Tech-Driven Learning Solutions",
-  description:"Tech Vision India - Training the Future",
+  description: "Tech Vision India - Training the Future",
   keywords: [
     "Ajayaa Edtech",
     "Tech Education",
     "Industry 4.0 Skills",
     "Computational Thinking",
     "AI Literacy",
-    "EdTech India",'ajayaa', 'edtech', 'tech training',
+    "EdTech India", 'ajayaa', 'edtech', 'tech training',
   ],
 
 };
@@ -34,7 +36,10 @@ export default function Home() {
       {/* <HorizontalScrollingCards/> */}
       {/* <CourseCategories /> testing dmuu */}
       {/* <TeacherShowcase/> */}
-      <EdTechConsultancy />
+      {/*   <EdTechConsultancy /> */}
+      <TrainingServices />
+      <NewFeaturedCourses />
+
       <WhyChooseUs />
       <ProjectOverview />
       <OfferingsComponent />
