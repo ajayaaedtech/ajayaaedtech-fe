@@ -1,120 +1,79 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Clock } from "lucide-react";
 
 export default function CourseCard({ course }) {
-  const [expanded, setExpanded] = useState(false);
-
   return (
-    <motion.div
-      layout
-      className={`relative bg-white shadow-md rounded-2xl overflow-hidden border border-gray-100 transition-all duration-500 hover:shadow-xl hover:scale-[1.01] ${
-        expanded ? "z-20 scale-[1.02]" : "z-0"
-      }`}
-      style={{
-        alignSelf: "start", // 👈 KEY: prevents grid row stretching
-      }}
-    >
-      {/* Header */}
-      <div className="flex items-center gap-4 p-5 border-b border-gray-100">
-        <div className="w-16 h-16 flex-shrink-0 relative">
-          <Image
-            src={course.logo}
-            alt={course.name}
-            fill
-            className="object-contain"
-          />
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-gray-800">
-            {course.name}
-          </h3>
-          <p className="text-sm text-gray-500">{course.duration}</p>
-        </div>
-      </div>
-
-      {/* Overview */}
-      <div className="px-5 pt-3 pb-2 text-gray-700 text-sm leading-relaxed">
-        {course.overview.length > 180 ? (
-          <>
-            {expanded
-              ? course.overview
-              : `${course.overview.slice(0, 180)}...`}
-          </>
-        ) : (
-          course.overview
-        )}
-      </div>
-
-      {/* Important Items */}
-      <div className="px-5 pb-4">
-        <h4 className="text-sm font-semibold text-gray-800 mb-1">
-          Key Highlights:
-        </h4>
-        <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
-          {course.importantItems
-            .slice(0, expanded ? undefined : 3)
-            .map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-        </ul>
-      </div>
-
-      {/* Expanded Content */}
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.div
-            key="expanded-content"
-            initial={{ maxHeight: 0, opacity: 0 }}
-            animate={{ maxHeight: 1000, opacity: 1 }}
-            exit={{ maxHeight: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="overflow-hidden px-5 pb-5"
-          >
-            <div className="border-t border-gray-200 pt-4 space-y-4">
-              {course.content.map((section, idx) => (
-                <div key={idx}>
-                  <h5 className="text-gray-800 font-semibold text-sm mb-1">
-                    {section.title}
-                  </h5>
-                  <ul className="list-disc list-inside text-gray-600 text-sm space-y-0.5">
-                    {section.topics.map((topic, j) => (
-                      <li key={j}>{topic}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Footer */}
-      <div className="border-t border-gray-100 p-4 flex justify-between items-center">
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
-        >
-          {expanded ? (
-            <>
-              Read Less <ChevronUp className="w-4 h-4" />
-            </>
-          ) : (
-            <>
-              Read More <ChevronDown className="w-4 h-4" />
-            </>
-          )}
-        </button>
-
+    <Link href={`/courses/${course.slug}`} className="no-underline">
+      <motion.div
+        whileHover={{ scale: 1.03, y: -4 }}
+        transition={{ type: "spring", stiffness: 220, damping: 20 }}
+        className="group relative bg-white border border-gray-100 rounded-2xl shadow-md hover:shadow-2xl overflow-hidden transition-all duration-500 p-6 flex flex-col text-gray-800 cursor-pointer"
+      >
+        {/* Featured Badge */}
         {course.featured && (
-          <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-2 py-1 rounded-full">
-            Featured
-          </span>
+          <div className="absolute top-4 right-4 z-10">
+            <span className="bg-gradient-to-r from-indigo-600 to-blue-500 text-white text-[11px] font-bold px-3 py-[4px] rounded-full shadow-md tracking-wide">
+              🌟 Featured
+            </span>
+          </div>
         )}
-      </div>
-    </motion.div>
+
+        {/* Centered Circular Image */}
+        <div className="flex justify-center mb-5 mt-2">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gray-100 flex items-center justify-center shadow-inner border border-gray-200 overflow-hidden">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28">
+              <Image
+                src={course.logo || "/placeholder-course.jpg"}
+                alt={course.name}
+                fill
+                className="object-cover rounded-full transition-transform duration-500 group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, 400px"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Course Name */}
+        <h3 className="text-lg sm:text-xl font-semibold text-center text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
+          {course.name}
+        </h3>
+
+        {/* Duration */}
+        <div className="flex justify-center items-center gap-1 text-sm text-blue-600 font-medium mb-3">
+          <Clock className="w-4 h-4 text-blue-500" />
+          {course.duration}
+        </div>
+
+        {/* Overview */}
+        <p className="text-gray-600 text-sm leading-relaxed text-center mb-4 line-clamp-3">
+          {course.overview}
+        </p>
+
+        {/* Highlights */}
+        {course.importantItems?.length > 0 && (
+          <div className="bg-gray-50 rounded-xl border border-gray-100 px-4 py-3 mb-6">
+            <h4 className="text-[13px] font-semibold text-gray-900 mb-2 text-center">
+              ✨ Key Highlights
+            </h4>
+            <ul className="list-disc list-inside text-gray-700 text-sm space-y-1 text-left">
+              {course.importantItems.slice(0, 4).map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Button / Footer */}
+        <div className="mt-auto flex justify-center">
+          <span className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold px-5 py-2 rounded-full shadow-md group-hover:from-indigo-600 group-hover:to-blue-700 transition-all duration-300">
+            View Full Course →
+          </span>
+        </div>
+      </motion.div>
+    </Link>
   );
 }

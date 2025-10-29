@@ -44,9 +44,24 @@ export default function TrainingServices() {
   return (
     <section className="py-16 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-lg font-bold text-gray-600 tracking-widest mb-8">
+        <h2 className="relative inline-block text-lg font-bold text-gray-600 tracking-widest mb-8">
           OUR TRAINING SERVICES
+          <svg
+            viewBox="0 0 200 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute left-0 bottom-[-10px] w-full h-3 sm:h-4 z-0"
+          >
+            <path
+              d="M2 15 C 50 10, 150 25, 198 12"
+              stroke="red"
+              strokeWidth="4"
+              strokeLinecap="round"
+              fill="none"
+            />
+          </svg>
         </h2>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, index) => (

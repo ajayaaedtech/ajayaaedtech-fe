@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { courses } from "./data/courses";
+import { courses } from "./data";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function CourseList() {
