@@ -4,8 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
+import imagehalf from "../../../public/half-logo.png";
+import { useState } from "react";
 
 export default function CourseCard({ course }) {
+  // Safely pick the initial image source
+  const getLogoSrc = (logo) => {
+    if (typeof logo === "string" && logo.trim() !== "") return logo.trim();
+    if (logo && typeof logo === "object") {
+      if (typeof logo.src === "string" && logo.src.trim() !== "") return logo.src.trim();
+      if (typeof logo.url === "string" && logo.url.trim() !== "") return logo.url.trim();
+    }
+    return imagehalf; // fallback
+  };
+
+  const [imgSrc, setImgSrc] = useState(getLogoSrc(course.logo));
+
   return (
     <Link href={`/courses/${course.slug}`} className="no-underline">
       <motion.div
@@ -27,11 +41,12 @@ export default function CourseCard({ course }) {
           <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gray-100 flex items-center justify-center shadow-inner border border-gray-200 overflow-hidden">
             <div className="relative w-24 h-24 sm:w-28 sm:h-28">
               <Image
-                src={course.logo || "/placeholder-course.jpg"}
-                alt={course.name}
+                src={imgSrc}
+                alt={course.name || "Course Logo"}
                 fill
                 className="object-cover rounded-full transition-transform duration-500 group-hover:scale-110"
                 sizes="(max-width: 768px) 100vw, 400px"
+                onError={() => setImgSrc(imagehalf)} // fallback if remote URL fails
               />
             </div>
           </div>
