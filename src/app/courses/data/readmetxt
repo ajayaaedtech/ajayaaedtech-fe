@@ -1,0 +1,40 @@
+I will give you raw course content copied from a website.  
+Your task is to convert it into the following structured JavaScript format:
+
+export const courses = [
+  {
+    name: "", // full name of the course
+    slug: "", // URL-friendly slug (lowercase, hyphen-separated)
+    logo: "", // leave blank or placeholder if no image
+    duration: "", // e.g., "90 Days" or "6 Weeks"
+    featured: true, // mark true if main course, false if not
+    overview: "", // 4–5 lines summary of the course
+
+    importantItems: [
+      // 3–5 key highlights or outcomes of the course
+    ],
+
+    whoCanAttend: [
+      // 3–5 ideal audience types
+    ],
+
+    prerequisites: "", // one line about prerequisites or 'None'
+
+    content: [
+      {
+        title: "", // module or section title
+        topics: [
+          // list of 4–6 topics covered in that module
+        ]
+      },
+      // repeat same pattern for all modules
+    ]
+  }
+];
+
+👉 Keep the same structure, indentation, and key names.
+👉 Convert plain text to clean, professional English.
+👉 If any info is missing, make a reasonable placeholder (e.g. "Coming Soon").
+👉 Don’t add explanations — return only valid JavaScript code.
+* dont miss any content 
+* always write perfect courses name, from suitalbe title . after const at starting
