@@ -23,7 +23,7 @@ import { devopstraining } from "./devopstraining";
 import { pythontraining } from "./pythontraining";
 import { cpptraining } from "./cpptraining";
 import { clanguagetraining } from "./clanguagetraining";
-import { seleniumtraining } from "./seleniumtraining";
+// import { seleniumtraining } from "./seleniumtraining";
 import { datastructuretraining } from "./datastructuretraining";
 import { corejavatraining } from "./corejavatraining";
 import { advancedjavatraining } from "./advancedjavatraining";
@@ -69,7 +69,7 @@ export const courses = [
   ...pythontraining,
   ...clanguagetraining,
   ...cpptraining,
-  ...seleniumtraining,
+  // ...seleniumtraining,
   ...xmltrainig,
   ...datastructuretraining,
   ...corejavatraining,
