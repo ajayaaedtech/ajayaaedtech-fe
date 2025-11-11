@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 import MobileMenu from "./MobileMenu";
 import BookSeatModal from "./BookSeatModal";
 
@@ -19,7 +20,21 @@ const menuItems = [
 export default function MainMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    // ✅ Check token existence
+    const token = Cookies.get("token");
+    const storedUser = localStorage.getItem("user");
+    if (token && storedUser) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -30,10 +45,23 @@ export default function MainMenu() {
     setIsOpen(open);
   };
 
+  const handleAuthAction = () => {
+    if (isLoggedIn) {
+      // ✅ Logout logic
+      Cookies.remove("token");
+      Cookies.remove("expiresAt");
+      localStorage.removeItem("user");
+      setIsLoggedIn(false);
+      router.push("/auth");
+    } else {
+      // ✅ Redirect to auth page for login
+      router.push("/auth");
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-lg">
       <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
-        
         {/* Left: Logo */}
         <div className="flex-1 flex justify-start">
           <Link href="/" className="flex items-center h-full">
@@ -90,11 +118,10 @@ export default function MainMenu() {
 
                   <div className="flex items-center gap-2 relative z-10">
                     <span
-                      className={`transition-colors duration-300 ${
-                        isActive
+                      className={`transition-colors duration-300 ${isActive
                           ? "text-white tracking-widest"
                           : "text-gray-800 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-cyan-500"
-                      }`}
+                        }`}
                     >
                       {item.name}
                     </span>
@@ -111,6 +138,21 @@ export default function MainMenu() {
               </li>
             );
           })}
+
+          {/* ✅ Login/Logout Button */}
+          <li>
+            <button
+              onClick={handleAuthAction}
+              className={`ml-3 px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 shadow-md hover:cursor-pointer
+      ${isLoggedIn
+                  ? "bg-gray-200 text-gray-800 hover:bg-gradient-to-r hover:from-red-500 hover:to-rose-400 hover:text-white"
+                  : "bg-gray-200 text-gray-800 hover:bg-gradient-to-r hover:from-blue-600 hover:to-cyan-500 hover:text-white"
+                }`}
+            >
+              {isLoggedIn ? "Logout" : "Login"}
+            </button>
+          </li>
+
         </ul>
       </nav>
 

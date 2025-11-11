@@ -38,12 +38,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Ribben />
         <ReduxProvider>
-          <Ribben/>
           <MainMenu />
           {children}
-          <Footer />
         </ReduxProvider>
+        <Footer />
       </body>
     </html>
   );

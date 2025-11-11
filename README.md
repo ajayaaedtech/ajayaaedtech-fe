@@ -40,3 +40,9 @@ Deployment: Vercel / Netlify / Docker
 
 ![Logo](https://i.ibb.co/9HQb94jK/AJAYAA-Ed-Tech-logo.png)
 
+dashboard/
+├── page.jsx                  # All courses
+├── [courseId]/               # Dynamic folder for selected course
+│   ├── page.jsx              # Units list page
+│   └── [unitId]/             # Dynamic folder for each unit
+│       └── page.jsx          # Video lessons / chapters
