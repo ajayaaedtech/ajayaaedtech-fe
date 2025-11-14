@@ -1,168 +1,293 @@
 "use client";
+
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import Cookies from "js-cookie";
+
 import MobileMenu from "./MobileMenu";
 import BookSeatModal from "./BookSeatModal";
 
-const menuItems = [
-  { name: "Home", href: "/" },
-  { name: "Our Courses", href: "/courses" },
-  { name: "About Us", href: "/about-us" },
-  { name: "Contact", href: "/contact" },
-  { name: "New Batches", href: "/new-batches" },
-];
+import Modal from "@mui/material/Modal";
+import Tooltip from "@mui/material/Tooltip";
+import Box from "@mui/material/Box";
+
+// Icons
+import DashboardIcon from "@mui/icons-material/SpaceDashboardOutlined";
+import EditIcon from "@mui/icons-material/EditOutlined";
+import BookIcon from "@mui/icons-material/MenuBookOutlined";
+import LogoutIcon from "@mui/icons-material/LogoutOutlined";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import EditProfileModalContent from "./EditProfileModalContent"
 
 export default function MainMenu() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // mobile drawer
+  const [openModal, setOpenModal] = useState(false); // book seat
+  const [profileModal, setProfileModal] = useState(false); // edit profile modal
 
+  const profileRef = useRef(null);
   const pathname = usePathname();
   const router = useRouter();
 
+  // MENU ITEMS USED IN BOTH DESKTOP + MOBILE
+  const menuItems = [
+    { title: "Home", link: "/" },
+    { title: "Our Courses", link: "/courses" },
+    { title: "About Us", link: "/about-us" },
+    { title: "Contact", link: "/contact" },
+    { title: "New Batches", link: "/new-batches" },
+  ];
+
+  // ENABLE CLIENT MODE
   useEffect(() => {
-    // ✅ Check token existence
-    const token = Cookies.get("token");
-    const storedUser = localStorage.getItem("user");
-    if (token && storedUser) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
+    setIsClient(true);
   }, []);
 
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    )
-      return;
+  // AFTER CLIENT MOUNT → LOAD USER SAFELY
+  const storedUser = isClient
+    ? JSON.parse(localStorage.getItem("user") || "{}")
+    : {};
+
+  const initials = storedUser?.name
+    ? storedUser.name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+    : "U";
+
+  // CHECK AUTH
+  useEffect(() => {
+    if (isClient) {
+      const token = Cookies.get("token");
+      const u = localStorage.getItem("user");
+      setIsLoggedIn(!!token && !!u);
+    }
+  }, [isClient, pathname]);
+
+  // CLOSE PROFILE WHEN CLICKING OUTSIDE
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setProfileOpen(false);
+      }
+    }
+
+    if (profileOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [profileOpen]);
+
+  const toggleDrawer = (open) => () => {
     setIsOpen(open);
+    setProfileOpen(false);
   };
 
-  const handleAuthAction = () => {
-    if (isLoggedIn) {
-      // ✅ Logout logic
-      Cookies.remove("token");
-      Cookies.remove("expiresAt");
-      localStorage.removeItem("user");
-      setIsLoggedIn(false);
-      router.push("/auth");
-    } else {
-      // ✅ Redirect to auth page for login
-      router.push("/auth");
-    }
+  const closeProfileAndNavigate = (path) => {
+    setProfileOpen(false);
+    router.push(path);
   };
+
+  const handleLogout = () => {
+    ["token", "user", "expiresAt"].forEach((key) => {
+      localStorage.removeItem(key);
+      Cookies.remove(key);
+    });
+    setProfileOpen(false);
+    router.push("/auth");
+  };
+
+  // SSR Protection
+  if (!isClient) return null;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-lg">
-      <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
-        {/* Left: Logo */}
-        <div className="flex-1 flex justify-start">
-          <Link href="/" className="flex items-center h-full">
+    <>
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow">
+        <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center h-full"
+            onClick={() => setProfileOpen(false)}
+          >
             <Image
               width={120}
               height={45}
               src="/b.png"
               alt="Ajayaa EdTech"
-              className="w-auto h-auto transition-transform duration-200 hover:scale-105"
+              className="w-auto h-auto hover:scale-105 transition"
             />
           </Link>
-        </div>
 
-        {/* Center: Book a Seat (mobile only) */}
-        <div className="flex-1 flex justify-center md:hidden">
-          <button
-            onClick={() => setOpenModal(true)}
-            className="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:shadow-lg transition duration-300"
-          >
-            Book a Seat
-          </button>
-        </div>
-
-        {/* Right: Hamburger (mobile only) */}
-        <div className="flex-1 flex justify-end md:hidden">
-          <button
-            onClick={toggleDrawer(true)}
-            className="text-gray-800 hover:text-blue-600 transition-transform hover:scale-110 focus:outline-none"
-            aria-label="Open menu"
-          >
-            <Menu size={28} />
-          </button>
-        </div>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-4 ml-auto bg-white/30 backdrop-blur-lg rounded-full px-5 py-2 shadow-lg border border-white/40">
-          {menuItems.map((item) => {
-            const isActive = pathname === item.href;
-            const isNewBatch = item.name === "New Batches";
-
-            return (
-              <li key={item.name} className="relative group">
-                <Link
-                  href={item.href}
-                  className="block px-5 py-2 rounded-full text-sm font-semibold relative transition duration-300"
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="menuHighlight"
-                      className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-400 rounded-full z-0 shadow-md"
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    />
-                  )}
-
-                  <div className="flex items-center gap-2 relative z-10">
-                    <span
-                      className={`transition-colors duration-300 ${isActive
-                          ? "text-white tracking-widest"
-                          : "text-gray-800 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-cyan-500"
-                        }`}
-                    >
-                      {item.name}
-                    </span>
-
-                    {/* 🔴 Ping dot for “New Batches” */}
-                    {isNewBatch && (
-                      <div className="relative flex items-center justify-center">
-                        <span className="absolute w-2.5 h-2.5 bg-red-500 rounded-full animate-ping opacity-75"></span>
-                        <span className="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
-                      </div>
-                    )}
-                  </div>
-                </Link>
-              </li>
-            );
-          })}
-
-          {/* ✅ Login/Logout Button */}
-          <li>
+          {/* MOBILE RIGHT SIDE */}
+          <div className="md:hidden flex items-center gap-3">
             <button
-              onClick={handleAuthAction}
-              className={`ml-3 px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 shadow-md hover:cursor-pointer
-      ${isLoggedIn
-                  ? "bg-gray-200 text-gray-800 hover:bg-gradient-to-r hover:from-red-500 hover:to-rose-400 hover:text-white"
-                  : "bg-gray-200 text-gray-800 hover:bg-gradient-to-r hover:from-blue-600 hover:to-cyan-500 hover:text-white"
-                }`}
+              onClick={() => {
+                setOpenModal(true);
+                setProfileOpen(false);
+              }}
+              className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow"
             >
-              {isLoggedIn ? "Logout" : "Login"}
+              Book a Seat
             </button>
-          </li>
 
-        </ul>
-      </nav>
+            <button
+              onClick={toggleDrawer(true)}
+              className="text-gray-800 hover:text-blue-600 transition"
+            >
+              <Menu size={32} />
+            </button>
+          </div>
 
-      {/* Mobile Drawer & Modal */}
-      <MobileMenu
-        isOpen={isOpen}
-        toggleDrawer={toggleDrawer}
-        menuItems={menuItems}
-      />
-      <BookSeatModal open={openModal} handleClose={() => setOpenModal(false)} />
-    </header>
+          {/* DESKTOP MENU */}
+          <ul className="hidden md:flex items-center space-x-6 ml-auto bg-white/60 backdrop-blur-xl rounded-xl px-7 py-3 shadow border">
+
+            {menuItems.map((item) => {
+              const active = pathname === item.link;
+              return (
+                <li key={item.title}>
+                  <Link
+                    href={item.link}
+                    onClick={() => setProfileOpen(false)}
+                    className={`px-3 py-2 text-sm font-medium rounded-lg transition 
+                      ${active ? "text-blue-600 font-semibold" : "text-gray-700 hover:text-blue-600"}
+                    `}
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              );
+            })}
+
+            {/* PROFILE */}
+            {isLoggedIn && (
+              <li className="relative" ref={profileRef}>
+                <Tooltip title="Your Profile">
+                  <div
+                    onClick={() => setProfileOpen((p) => !p)}
+                    className="flex items-center gap-2 cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-500 
+                    px-4 py-2 rounded-full shadow text-white"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-blue-700 font-semibold">
+                      {initials}
+                    </div>
+
+                    <span className="font-medium text-sm">{storedUser?.name}</span>
+
+                    <KeyboardArrowDownIcon />
+                  </div>
+                </Tooltip>
+
+                {/* DROPDOWN */}
+                {profileOpen && (
+                  <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-200 z-[200]">
+
+                    <div className="px-4 py-4 border-b">
+                      <p className="font-semibold text-gray-900">{storedUser?.name}</p>
+                      <p className="text-sm text-gray-500">{storedUser?.email}</p>
+                    </div>
+
+                    <div className="py-2">
+
+                      <button
+                        onClick={() => closeProfileAndNavigate("/dashboard")}
+                        className="flex items-center gap-3 px-4 py-2 w-full hover:bg-gray-100 text-sm"
+                      >
+                        <DashboardIcon fontSize="small" />
+                        Dashboard
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          setProfileModal(true);
+                          setProfileOpen(false);
+                        }}
+                        className="flex items-center gap-3 px-4 py-2 w-full hover:bg-gray-100 text-sm"
+                      >
+                        <EditIcon fontSize="small" />
+                        Edit Profile
+                      </button>
+
+                      <button
+                        onClick={() => closeProfileAndNavigate("/courses")}
+                        className="flex items-center gap-3 px-4 py-2 w-full hover:bg-gray-100 text-sm"
+                      >
+                        <BookIcon fontSize="small" />
+                        My Courses
+                      </button>
+
+                    </div>
+
+                    <div className="border-t">
+                      <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-3 px-4 py-3 w-full hover:bg-gray-100 text-sm text-red-600"
+                      >
+                        <LogoutIcon fontSize="small" />
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </li>
+            )}
+
+            {!isLoggedIn && (
+              <li>
+                <button
+                  onClick={() => closeProfileAndNavigate("/auth")}
+                  className="px-5 py-2 cursor-pointer bg-gray-300 text-gray-800 rounded-full font-semibold hover:bg-blue-400 hover:text-white transition"
+                >
+                  Login / Sign up
+                </button>
+              </li>
+            )}
+          </ul>
+        </nav>
+
+        {/* MOBILE MENU - FIXED & SSR SAFE */}
+        <MobileMenu
+          isOpen={isOpen}
+          toggleDrawer={toggleDrawer}
+          menuItems={menuItems}
+          isLoggedIn={isLoggedIn}
+          handleLogout={handleLogout}
+        />
+
+        <BookSeatModal open={openModal} handleClose={() => setOpenModal(false)} />
+      </header>
+
+      {/* EDIT PROFILE MODAL */}
+      {/* EDIT PROFILE MODAL */}
+      <Modal open={profileModal} onClose={() => setProfileModal(false)}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            backgroundColor: "rgba(255,255,255,0.85)",
+            backdropFilter: "blur(14px)",
+            padding: "24px",
+            borderRadius: "18px",
+            width: { xs: "90%", sm: 420 },
+            boxShadow: 6,
+          }}
+        >
+          <EditProfileModalContent
+            onClose={() => setProfileModal(false)}
+          />
+        </Box>
+      </Modal>
+
+    </>
   );
 }

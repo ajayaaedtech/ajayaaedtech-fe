@@ -19,4 +19,12 @@ export const API = {
     SINGLE: (id) => `${BASE_API}/courses/${id}`,
     ENROLL: `${BASE_API}/courses/enroll`,
   },
+  PROFILEEDIT:{
+    namechange : `${BASE_API}/user/update-profile`,
+    getDataOfUser : `${BASE_API}/user/public-user`,
+  },
+  CALLBACKREQUEST:{
+    callback:`${BASE_API}/callback/request`,
+  }
+
 };

@@ -14,18 +14,32 @@ export const fetchCourses = createAsyncThunk("courses/fetchCourses", async (_, t
 
 // 🔹 Fetch detailed course info
 
+// export const fetchCourseDetails = createAsyncThunk(
+//   "courses/fetchCourseDetails",
+//   async (courseId, thunkAPI) => {
+//     try {
+//       const res = await fetch(`http://localhost:5001/api/course/details/${courseId}`);
+//       const data = await res.json();
+
+//       if (!res.ok) throw new Error(data.message || "Failed to fetch course details");
+
+//       // 👇 The API returns the course directly, not nested in "course"
+//       console.log("Fetched detail data:", data);
+//       return data; 
+//     } catch (err) {
+//       return thunkAPI.rejectWithValue(err.message);
+//     }
+//   }
+// );
+
 export const fetchCourseDetails = createAsyncThunk(
   "courses/fetchCourseDetails",
-  async (courseId, thunkAPI) => {
+  async (courseSlug, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/course/details/${courseId}`);
+      const res = await fetch(`http://localhost:5001/api/course/details/${courseSlug}`);
       const data = await res.json();
-
       if (!res.ok) throw new Error(data.message || "Failed to fetch course details");
-
-      // 👇 The API returns the course directly, not nested in "course"
-      console.log("Fetched detail data:", data);
-      return data; 
+      return data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
     }
@@ -33,12 +47,13 @@ export const fetchCourseDetails = createAsyncThunk(
 );
 
 
+
 const courseSlice = createSlice({
   name: "courses",
   initialState: {
     courses: [],
     selectedCourse: null,
-    loading: false,
+    loading: true,
     error: null,
   },
   reducers: {

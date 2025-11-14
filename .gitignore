@@ -20,6 +20,8 @@ package-lock.json
 
 # production
 /build
+# Ignore local API testing folder
+src/app/testing/
 
 # misc
 .DS_Store

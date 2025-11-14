@@ -4,6 +4,7 @@ import MainMenu from "./components/menu/MainMenu";
 import Ribben from "./components/menu/Ribben";
 import ReduxProvider from "./provider";
 import Footer from "./components/Footer/Footer";
+import DisableInspect from "./DisableInspect"; // <-- added
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -38,6 +39,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <DisableInspect /> {/* Protection enabled */}
+
         <Ribben />
         <ReduxProvider>
           <MainMenu />
