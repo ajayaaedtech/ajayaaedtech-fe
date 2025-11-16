@@ -5,9 +5,6 @@ import dynamic from "next/dynamic";
 import Loader from "../components/Loader";
 import { GiSandsOfTime } from "react-icons/gi";
 
-export const preload = () => {
-  import("../components/AuthForm");
-};
 
 const AuthForm = dynamic(() => import("../components/AuthForm"), {
   ssr: true,
