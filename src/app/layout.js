@@ -33,13 +33,13 @@ export const metadata = {
 };
 
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
         className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <DisableInspect /> {/* Protection enabled */}
 
         <Ribben />
         <ReduxProvider>
@@ -47,6 +47,7 @@ export default function RootLayout({ children }) {
           {children}
         </ReduxProvider>
         <Footer />
+        <DisableInspect />
       </body>
     </html>
   );

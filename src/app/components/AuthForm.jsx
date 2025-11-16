@@ -91,15 +91,15 @@ export default function AuthForm() {
 
         if (!res.ok) throw new Error(data.message || "Login failed");
 
-        const expiresAt = Date.now() + 60 * 60 * 1000;
+        const expiresAt = Date.now() + 4 * 60 * 60 * 1000;
         dispatch(loginSuccess({ user: data.user, token: data.token, expiresAt }));
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("expiresAt", expiresAt.toString());
-        document.cookie = `token=${data.token}; path=/; max-age=${60 * 60}; secure; samesite=lax`;
+        document.cookie = `token=${data.token}; path=/; max-age=${4*60 * 60}; secure; samesite=lax`;
 
         toast.success("Loging in — redirecting... ", { position: "bottom-center", autoClose: 1800 });
-        setTimeout(() => router.push("/dashboard"), 1900);
+        setTimeout(() => router.push("/dashboard"), 1200);
       } else {
         if (step < 3) {
           goNext();

@@ -1,6 +1,7 @@
 // src/config/api.js
 
-export const BASE_API = "http://localhost:5001/api";
+export const BASE_API = "https://ajayaaedtech-be.onrender.com/api";
+// export const BASE_API = "http://localhost:5000/api";
 
 export const API = {
   AUTH: {
@@ -18,13 +19,16 @@ export const API = {
     ALL: `${BASE_API}/courses`,
     SINGLE: (id) => `${BASE_API}/courses/${id}`,
     ENROLL: `${BASE_API}/courses/enroll`,
+    fetchcourse: `${BASE_API}/course/names`,
+    MY_COURSES: `${BASE_API}/course/my-courses`,
+
   },
-  PROFILEEDIT:{
-    namechange : `${BASE_API}/user/update-profile`,
-    getDataOfUser : `${BASE_API}/user/public-user`,
+  PROFILEEDIT: {
+    namechange: `${BASE_API}/user/update-profile`,
+    getDataOfUser: `${BASE_API}/user/public-user`,
   },
-  CALLBACKREQUEST:{
-    callback:`${BASE_API}/callback/request`,
+  CALLBACKREQUEST: {
+    callback: `${BASE_API}/callback/request`,
   }
 
 };

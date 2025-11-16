@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import {API} from "../../app/Api"
 // 🔹 Fetch all course names
 export const fetchCourses = createAsyncThunk("courses/fetchCourses", async (_, thunkAPI) => {
   try {
-    const response = await fetch("http://localhost:5001/api/course/names");
+    const response = await fetch(API?.COURSES.fetchcourse);
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || "Failed to fetch courses");
     return data.courses || [];
@@ -12,25 +12,6 @@ export const fetchCourses = createAsyncThunk("courses/fetchCourses", async (_, t
   }
 });
 
-// 🔹 Fetch detailed course info
-
-// export const fetchCourseDetails = createAsyncThunk(
-//   "courses/fetchCourseDetails",
-//   async (courseId, thunkAPI) => {
-//     try {
-//       const res = await fetch(`http://localhost:5001/api/course/details/${courseId}`);
-//       const data = await res.json();
-
-//       if (!res.ok) throw new Error(data.message || "Failed to fetch course details");
-
-//       // 👇 The API returns the course directly, not nested in "course"
-//       console.log("Fetched detail data:", data);
-//       return data; 
-//     } catch (err) {
-//       return thunkAPI.rejectWithValue(err.message);
-//     }
-//   }
-// );
 
 export const fetchCourseDetails = createAsyncThunk(
   "courses/fetchCourseDetails",
@@ -45,6 +26,30 @@ export const fetchCourseDetails = createAsyncThunk(
     }
   }
 );
+// 🔹 Fetch My Courses (based on userId)
+export const fetchMyCourses = createAsyncThunk(
+  "courses/fetchMyCourses",
+  async ({ type, value }, thunkAPI) => {
+    try {
+      const response = await fetch(API.COURSES.MY_COURSES, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ type, value }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) throw new Error(data.message || "Failed to fetch user courses");
+
+      return data.courses || [];
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);
+
 
 
 
