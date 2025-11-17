@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import {BASE_API} from "../../Api"
 import dynamic from "next/dynamic";
 import "plyr-react/plyr.css";
 
@@ -73,10 +74,9 @@ export default function DetailOnlinePage({ course, onBack }) {
 
         // Use environment variable for API base if provided; fallback to absolute local host if needed.
         const apiBase =
-          (typeof window !== "undefined" && process.env.NEXT_PUBLIC_API_URL) ||
-          "http://localhost:5001";
+          (typeof window !== "undefined" && BASE_API)
 
-        const endpoint = `${apiBase}/api/video/stream/${selectedChapter.courseId}/${selectedChapter.unitId}/${selectedChapter.chapterId}`;
+        const endpoint = `${apiBase}/video/stream/${selectedChapter.courseId}/${selectedChapter.unitId}/${selectedChapter.chapterId}`;
 
         const res = await fetch(endpoint, {
           method: "GET",

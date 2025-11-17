@@ -20,6 +20,7 @@ export const API = {
     SINGLE: (id) => `${BASE_API}/courses/${id}`,
     ENROLL: `${BASE_API}/courses/enroll`,
     fetchcourse: `${BASE_API}/course/names`,
+    fetchcoursedetails: `${BASE_API}/course/details/`,
     MY_COURSES: `${BASE_API}/course/my-courses`,
 
   },
