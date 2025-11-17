@@ -1,5 +1,4 @@
 // src/config/api.js
-
 export const BASE_API = "https://ajayaaedtech-be.onrender.com/api";
 // export const BASE_API = "http://localhost:5000/api";
 

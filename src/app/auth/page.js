@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Loader from "../components/Loader";
 import { GiSandsOfTime } from "react-icons/gi";
+import AuthForm from "../components/AuthForm"
 
-
-const AuthForm = dynamic(() => import("../components/AuthForm"), {
-  ssr: true,
-  loading: () => null,
-});
+// const AuthForm = dynamic(() => import("../components/AuthForm"), {
+//   ssr: false,
+//   loading: () => <Loader title="Loading ..." />,
+// });
 
 export default function DashboardPage() {
   const router = useRouter();

@@ -6,9 +6,8 @@ import { motion } from "framer-motion";
 export default function Ribben() {
   return (
     <motion.div
-      initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+
       className="w-full bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 text-white py-3 px-5 shadow-md"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-end gap-6 flex-wrap">
