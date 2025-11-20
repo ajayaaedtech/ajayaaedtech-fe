@@ -73,7 +73,7 @@ export default function Page() {
         </DialogTitle>
         <DialogContent>
           <p className="text-gray-700">
-            We will launch for everyone on <b>15th November</b>. Stay tuned!
+            We will launch for everyone .... Stay tuned!
           </p>
         </DialogContent>
         <DialogActions>

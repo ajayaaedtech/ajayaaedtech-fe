@@ -119,9 +119,11 @@ export default function Footer() {
                   Know more about our courses. <br />
                   Book a free counselling session.
                 </h3>
-                <button className="mt-2 sm:mt-3 px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs sm:text-sm font-medium bg-orange-500 hover:bg-orange-600 rounded-md transition duration-300">
-                  Speak to an expert
-                </button>
+                <Link href="/contact">
+                  <button className="hover:cursor-pointer mt-2 sm:mt-3 px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs sm:text-sm font-medium bg-orange-500 hover:bg-orange-600 rounded-md transition duration-300">
+                    Speak to an expert
+                  </button>
+                </Link>
               </div>
 
               {/* Expert Image */}
