@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
           {children}
         </ReduxProvider>
         <Footer />
-        <DisableInspect />
+        {/* <DisableInspect /> */}
       </body>
     </html>
   );
