@@ -6,7 +6,7 @@ import { MdOutlineSchool, MdTrendingUp, MdVerified } from "react-icons/md";
 import { HiSparkles, HiAcademicCap } from "react-icons/hi";
 import cbseIcon from '../herosection/CBSE_new_logo.png';
 import collages from '../herosection/collages.png';
-import students from '../herosection/students-group.avif';
+import students from '../herosection/students-group.webp';
 import privateinstitues from '../herosection/private-institute.jpg';
 import Image from "next/image";
 import Link from "next/link";

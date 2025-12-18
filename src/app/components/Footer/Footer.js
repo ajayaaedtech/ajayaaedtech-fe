@@ -1,8 +1,7 @@
 "use client";
-import rightmostimage from "/public/b.png";
 import Image from "next/image";
 import Link from "next/link";
-import expert from "/public/newsletter-icon.svg";
+// import expert from "/newsletter-icon.svg";
 import imagehalf from "../../../../public/half-logo.png";
 
 export default function Footer() {
@@ -127,9 +126,11 @@ export default function Footer() {
               </div>
 
               {/* Expert Image */}
-              <div className="min-w-[50px] sm:min-w-[60px] w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-orange-100 flex items-center justify-center">
+              <div className="border-amber-200 min-w-[50px] sm:min-w-[60px] w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-orange-100 flex items-center justify-center">
                 <Image
-                  src={expert}
+                  src="/newsletter-icon.svg"
+                  width={10}
+                  height={10}
                   alt="Expert Icon"
                   className="object-contain w-10 h-10 sm:w-12 sm:h-12"
                 />

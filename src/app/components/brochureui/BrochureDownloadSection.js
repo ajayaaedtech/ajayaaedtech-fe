@@ -13,8 +13,10 @@ export default function BrochureDownloadSection() {
       setIsDownloaded(true);
 
       const link = document.createElement('a');
-      link.href = '/ajayaa-pdf.pdf';
-      link.download = 'ajayaa-pdf.pdf';
+      // link.href = '/ajayaa-pdf.pdf';
+      // link.download = 'ajayaa-pdf.pdf';
+      link.href = '/Ajayaa-EdTECH-Brochure.pdf';
+      link.download = 'Ajayaa-EdTECH-Brochure.pdf';
       link.click();
 
       setTimeout(() => setIsDownloaded(false), 3000);
@@ -100,11 +102,10 @@ export default function BrochureDownloadSection() {
                 <button
                   onClick={handleDownload}
                   disabled={isDownloading}
-                  className={`animate-bounce group relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50 ${
-                    isDownloaded
+                  className={`animate-bounce group relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50 ${isDownloaded
                       ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
                       : 'bg-gradient-to-r from-[#1A4AA9] to-[#A9791A] text-white shadow-lg hover:shadow-xl'
-                  }`}
+                    }`}
                 >
                   {isDownloading ? (
                     <>
